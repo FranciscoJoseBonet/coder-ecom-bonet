@@ -1,10 +1,14 @@
-import { useState } from "react";
+import Navbar from "./components/Navbar.jsx";
+import ItemListContainer from "./components/ItemListContainer.jsx";
 import "./App.css";
 
 function App() {
-	const [count, setCount] = useState(0);
-
-	return <></>;
+	return (
+		<>
+			<Navbar />
+			<ItemListContainer greeting="Bienvenidos a mi app" />
+		</>
+	);
 }
 
 export default App;

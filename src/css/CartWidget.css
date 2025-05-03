@@ -1,0 +1,23 @@
+.cart__widget {
+	position: relative;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.cart__icon {
+	font-size: 1.5rem;
+	color: #e5e5e5;
+}
+
+.cart__count {
+	position: absolute;
+	top: -6px;
+	right: -10px;
+	background-color: crimson;
+	color: white;
+	font-size: 0.75rem;
+	padding: 2px 6px;
+	border-radius: 50%;
+	font-weight: bold;
+}
