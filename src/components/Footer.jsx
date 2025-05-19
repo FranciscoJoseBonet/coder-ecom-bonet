@@ -21,6 +21,8 @@ const Footer = () => {
 		warranty: "Warranty",
 	};
 
+	const legals = ["Privacy Policy", "Terms of Service", "Sitemap"];
+
 	return (
 		<footer className="bg-light pt-5 pb-3">
 			<div className="container">
@@ -29,11 +31,11 @@ const Footer = () => {
 					<div className="col-lg-4 col-md-6">
 						<div className="mb-4">
 							<Logo />
-							<p className="text-muted">
+							<p className="text-muted mt-4">
 								Premium musical instruments for professionals and enthusiasts. Quality
 								craftsmanship since 2005.
 							</p>
-							<div className="d-flex gap-2 mt-3">
+							<div className="d-flex gap-2 mt-4">
 								<WebLinks />
 							</div>
 						</div>
@@ -79,36 +81,28 @@ const Footer = () => {
 
 				<hr className="my-4" />
 
-				{/* Bottom Footer */}
+				{/* Abajo del footer */}
 				<div className="row align-items-center">
 					<div className="col-md-6 text-center text-md-start">
 						<p className="text-muted mb-md-0">
-							&copy; {new Date().getFullYear()} RbMusic. All rights reserved.
+							&copy; {new Date().getFullYear()} B'nT. All rights reserved.
 						</p>
 					</div>
 					<div className="col-md-6">
 						<ul className="list-inline text-center text-md-end mb-0">
-							<li className="list-inline-item">
-								<a href="/privacy" className="text-decoration-none text-muted small">
-									Privacy Policy
-								</a>
-							</li>
-							<li className="list-inline-item">
-								<span className="text-muted mx-2">|</span>
-							</li>
-							<li className="list-inline-item">
-								<a href="/terms" className="text-decoration-none text-muted small">
-									Terms of Service
-								</a>
-							</li>
-							<li className="list-inline-item">
-								<span className="text-muted mx-2">|</span>
-							</li>
-							<li className="list-inline-item">
-								<a href="/sitemap" className="text-decoration-none text-muted small">
-									Sitemap
-								</a>
-							</li>
+							{legals.map((item, index) => {
+								return (
+									<li className="list-inline-item">
+										<a
+											key="index"
+											href="/legals"
+											className="text-decoration-none text-muted small"
+										>
+											{item} |
+										</a>
+									</li>
+								);
+							})}
 						</ul>
 					</div>
 				</div>
