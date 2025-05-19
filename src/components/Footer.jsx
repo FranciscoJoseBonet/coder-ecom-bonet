@@ -1,118 +1,51 @@
-import {
-	FaFacebook,
-	FaTwitter,
-	FaInstagram,
-	FaYoutube,
-	FaEnvelope,
-	FaPhone,
-	FaMapMarkerAlt,
-	FaGuitar,
-} from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+
+import Logo from "./Logo";
+import WebLinks from "./WebLinks";
+import FooterLinkColumn from "./FooterLinkColumn";
 
 const Footer = () => {
+	const shopLinks = {
+		guitars: "Guitars",
+		keyboards: "Keyboards",
+		drums: "Drums",
+		winds: "Wind Instruments",
+		acc: "Accesories",
+	};
+
+	const SuppLinks = {
+		contact: "Contact Us",
+		faq: "FAQs",
+		shipping: "Shipping Info",
+		returns: "Returns & Exchanges",
+		warranty: "Warranty",
+	};
+
 	return (
 		<footer className="bg-light pt-5 pb-3">
 			<div className="container">
 				<div className="row g-4">
-					{/* Company Info */}
+					{/* Primera columna */}
 					<div className="col-lg-4 col-md-6">
 						<div className="mb-4">
-							<a
-								className="d-flex align-items-center text-decoration-none text-dark mb-3"
-								href="/"
-							>
-								<FaGuitar className="me-2" size={24} />
-								<span className="h4 mb-0 fw-bold">RbMusic</span>
-							</a>
+							<Logo />
 							<p className="text-muted">
 								Premium musical instruments for professionals and enthusiasts. Quality
 								craftsmanship since 2005.
 							</p>
 							<div className="d-flex gap-2 mt-3">
-								<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-									<FaFacebook />
-								</a>
-								<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-									<FaTwitter />
-								</a>
-								<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-									<FaInstagram />
-								</a>
-								<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-									<FaYoutube />
-								</a>
+								<WebLinks />
 							</div>
 						</div>
 					</div>
 
-					{/* Quick Links */}
-					<div className="col-lg-2 col-md-6 col-6">
-						<h5 className="mb-3">Shop</h5>
-						<ul className="list-unstyled">
-							<li className="mb-2">
-								<a href="/category/guitars" className="text-decoration-none text-muted">
-									Guitars
-								</a>
-							</li>
-							<li className="mb-2">
-								<a href="/category/pianos" className="text-decoration-none text-muted">
-									Pianos & Keyboards
-								</a>
-							</li>
-							<li className="mb-2">
-								<a href="/category/drums" className="text-decoration-none text-muted">
-									Drums & Percussion
-								</a>
-							</li>
-							<li className="mb-2">
-								<a href="/category/wind" className="text-decoration-none text-muted">
-									Wind Instruments
-								</a>
-							</li>
-							<li className="mb-2">
-								<a
-									href="/category/accessories"
-									className="text-decoration-none text-muted"
-								>
-									Accessories
-								</a>
-							</li>
-						</ul>
-					</div>
+					{/* Segunda Columna */}
+					<FooterLinkColumn title="Shop" LinkObj={shopLinks} />
 
-					{/* Support Links */}
-					<div className="col-lg-2 col-md-6 col-6">
-						<h5 className="mb-3">Support</h5>
-						<ul className="list-unstyled">
-							<li className="mb-2">
-								<a href="/contact" className="text-decoration-none text-muted">
-									Contact Us
-								</a>
-							</li>
-							<li className="mb-2">
-								<a href="/faq" className="text-decoration-none text-muted">
-									FAQs
-								</a>
-							</li>
-							<li className="mb-2">
-								<a href="/shipping" className="text-decoration-none text-muted">
-									Shipping Info
-								</a>
-							</li>
-							<li className="mb-2">
-								<a href="/returns" className="text-decoration-none text-muted">
-									Returns & Exchanges
-								</a>
-							</li>
-							<li className="mb-2">
-								<a href="/warranty" className="text-decoration-none text-muted">
-									Warranty
-								</a>
-							</li>
-						</ul>
-					</div>
+					{/* Tercera Columna */}
+					<FooterLinkColumn title="Support" LinkObj={SuppLinks} />
 
-					{/* Newsletter */}
+					{/* Cuarta Columna */}
 					<div className="col-lg-4 col-md-6">
 						<h5 className="mb-3">Stay Updated</h5>
 						<p className="text-muted mb-3">
