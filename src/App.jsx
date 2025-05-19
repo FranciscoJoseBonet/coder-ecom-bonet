@@ -13,7 +13,7 @@ function App() {
 				<Navbar />
 				<main className="flex-grow-1">
 					<div className="container py-5">
-						<h1>Bienvenidos a RbMusic</h1>
+						<h1>Welcome to RbMusic</h1>
 						<p>Tu lugar de excelencia de venta de instrumentos</p>
 					</div>
 				</main>
