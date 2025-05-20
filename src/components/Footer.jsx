@@ -1,4 +1,12 @@
-import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+import {
+	FaEnvelope,
+	FaPhone,
+	FaMapMarkerAlt,
+	FaFacebook,
+	FaTwitter,
+	FaInstagram,
+	FaYoutube,
+} from "react-icons/fa";
 
 import Logo from "./Logo";
 import WebLinks from "./WebLinks";
@@ -21,6 +29,29 @@ const Footer = () => {
 		warranty: "Warranty",
 	};
 
+	const webObjects = [
+		{
+			id: "facebook-link-footer",
+			url: "url-to-facebook",
+			icon: <FaFacebook />,
+		},
+		{
+			id: "instagram-link-footer",
+			url: "url-to-instagram",
+			icon: <FaInstagram />,
+		},
+		{
+			id: "twitter-link-footer",
+			url: "url-to-twitter",
+			icon: <FaTwitter />,
+		},
+		{
+			id: "youtube-link-footer",
+			url: "url-to-youtube",
+			icon: <FaYoutube />,
+		},
+	];
+
 	const legals = ["Privacy Policy", "Terms of Service", "Sitemap"];
 
 	return (
@@ -36,7 +67,16 @@ const Footer = () => {
 								craftsmanship since 2005.
 							</p>
 							<div className="d-flex gap-2 mt-4">
-								<WebLinks />
+								{webObjects.map((item) => {
+									return (
+										<WebLinks
+											key={item.id}
+											id={item.id}
+											url={item.url}
+											icon={item.icon}
+										/>
+									);
+								})}
 							</div>
 						</div>
 					</div>
@@ -90,14 +130,10 @@ const Footer = () => {
 					</div>
 					<div className="col-md-6">
 						<ul className="list-inline text-center text-md-end mb-0">
-							{legals.map((item) => {
+							{legals.map((item, index) => {
 								return (
-									<li className="list-inline-item">
-										<a
-											key="index"
-											href="/legals"
-											className="text-decoration-none text-muted small"
-										>
+									<li className="list-inline-item" key={index}>
+										<a href="/legals" className="text-decoration-none text-muted small">
 											{item} |
 										</a>
 									</li>

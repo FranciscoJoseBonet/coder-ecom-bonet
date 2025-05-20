@@ -22,12 +22,8 @@ const NavDropdown = () => {
 				{Object.keys(dropItems).map((item) => {
 					const value = dropItems[item];
 					return (
-						<li>
-							<a
-								key={value + " nav"}
-								href={`/category/${item}`}
-								className="dropdown-item"
-							>
+						<li key={value + " nav"}>
+							<a href={`/category/${item}`} className="dropdown-item">
 								{value}
 							</a>
 						</li>

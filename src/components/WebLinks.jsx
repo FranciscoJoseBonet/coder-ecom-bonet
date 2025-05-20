@@ -1,19 +1,12 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-
-const WebLinks = () => {
+const WebLinks = (props) => {
 	return (
 		<>
-			<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-				<FaFacebook />
-			</a>
-			<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-				<FaTwitter />
-			</a>
-			<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-				<FaInstagram />
-			</a>
-			<a href="#" className="btn btn-sm btn-outline-dark rounded-circle">
-				<FaYoutube />
+			<a
+				href={`${props.url}`}
+				className="btn btn-sm btn-outline-dark rounded-circle d-flex justify-content-center align-items-center"
+				style={{ width: "40px", height: "40px" }}
+			>
+				{props.icon}
 			</a>
 		</>
 	);
