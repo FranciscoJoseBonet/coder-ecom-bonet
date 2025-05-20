@@ -89,11 +89,11 @@ const HomePage = () => {
 								High-quality instruments for passionate musicians, from beginners to
 								professionals.
 							</p>
-							<div className="d-flex gap-3 d-flex justify-content-center width-100">
-								<a href="/shop" className="btn btn-dark btn-lg px-4 py-2">
+							<div className="d-flex gap-3 d-flex justify-content-center">
+								<a href="/shop" className="btn btn-dark btn-lg px-4 py-2 w-100">
 									Shop Now
 								</a>
-								<a href="/about" className="btn btn-outline-dark btn-lg px-4 py-2">
+								<a href="/about" className="btn btn-outline-dark btn-lg px-4 py-2 w-100">
 									Learn More
 								</a>
 							</div>
