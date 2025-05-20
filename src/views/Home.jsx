@@ -1,36 +1,40 @@
 import { FaArrowRight, FaGuitar, FaDrum, FaHeadphones } from "react-icons/fa";
 import { GiSaxophone } from "react-icons/gi";
+
+{
+	/* Importacion de los componentes a usar */
+}
 import ProductCard from "../components/ProductCard.jsx";
 import CategoryCard from "../components/CategoryCard.jsx";
 
-// Sample featured products data
+// Data de los productos inventada
 const featuredProducts = [
 	{
 		id: 1,
 		name: "Gibson Les Paul Standard",
 		price: 2499.99,
-		image: "/placeholder.svg?height=300&width=300",
+		image: "https://i.postimg.cc/GHLtXKKw/gibson.png",
 		category: "Guitars",
 	},
 	{
 		id: 2,
 		name: "Yamaha P-125 Digital Piano",
 		price: 649.99,
-		image: "/placeholder.svg?height=300&width=300",
+		image: "https://i.postimg.cc/LhBhkwz3/yamaha.jpg",
 		category: "Keyboards",
 	},
 	{
 		id: 3,
 		name: "Fender American Professional II",
 		price: 1699.99,
-		image: "/placeholder.svg?height=300&width=300",
+		image: "https://http2.mlstatic.com/D_NQ_NP_734948-MLA70441977503_072023-O.webp",
 		category: "Guitars",
 	},
 	{
 		id: 4,
 		name: "Roland TD-17KVX V-Drums",
 		price: 1699.99,
-		image: "/placeholder.svg?height=300&width=300",
+		image: "https://i.postimg.cc/ZCwR2Ns9/roland-Drum.jpg",
 		category: "Drums",
 	},
 ];
@@ -95,7 +99,7 @@ const HomePage = () => {
 						</div>
 						<div className="col-lg-6">
 							<img
-								src="/placeholder.svg?height=500&width=700"
+								src="https://i.postimg.cc/SxJGrGXb/s.jpg"
 								alt="Premium musical instruments"
 								className="img-fluid rounded shadow"
 							/>

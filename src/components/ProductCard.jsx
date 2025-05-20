@@ -1,11 +1,15 @@
 const ProductCard = ({ product }) => {
 	return (
 		<div className="card h-100 border-0 shadow-sm">
-			<div className="position-relative">
+			<div
+				className="d-flex justify-content-center align-items-center"
+				style={{ height: "200px" }}
+			>
 				<img
 					src={product.image || "/placeholder.svg"}
-					className="card-img-top"
+					className="img-fluid"
 					alt={product.name}
+					style={{ maxHeight: "100%", width: "auto", height: "auto" }}
 				/>
 				<span className="badge bg-dark position-absolute top-0 end-0 m-2">
 					{product.category}
