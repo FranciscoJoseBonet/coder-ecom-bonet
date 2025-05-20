@@ -6,6 +6,7 @@ import { GiSaxophone } from "react-icons/gi";
 }
 import ProductCard from "../components/ProductCard.jsx";
 import CategoryCard from "../components/CategoryCard.jsx";
+import CallToAction from "../components/CallToAction.jsx";
 
 // Data de los productos inventada
 const featuredProducts = [
@@ -88,7 +89,7 @@ const HomePage = () => {
 								High-quality instruments for passionate musicians, from beginners to
 								professionals.
 							</p>
-							<div className="d-flex gap-3">
+							<div className="d-flex gap-3 d-flex justify-content-center width-100">
 								<a href="/shop" className="btn btn-dark btn-lg px-4 py-2">
 									Shop Now
 								</a>
@@ -145,32 +146,18 @@ const HomePage = () => {
 			<section className="py-5">
 				<div className="container">
 					<div className="row g-">
-						<div className="col-md-6">
-							<div className="card border-0 bg-dark text-white h-100">
-								<div className="card-body p-4">
-									<h3 className="card-title">New Arrivals</h3>
-									<p className="card-text">
-										Discover our latest collection of premium instruments.
-									</p>
-									<a href="/new-arrivals" className="btn btn-outline-light mt-2">
-										Explore New Arrivals
-									</a>
-								</div>
-							</div>
-						</div>
-						<div className="col-md-6">
-							<div className="card border-0 bg-secondary text-white h-100">
-								<div className="card-body p-4">
-									<h3 className="card-title">Special Offers</h3>
-									<p className="card-text">
-										Limited-time deals on selected instruments and accessories.
-									</p>
-									<a href="/special-offers" className="btn btn-outline-light mt-2">
-										View Special Offers
-									</a>
-								</div>
-							</div>
-						</div>
+						<CallToAction
+							title="New Arrivals"
+							cardText="Discover our latest collection of premium instruments"
+							buttonText="Explore New Arrivals"
+							col="dark"
+						/>
+						<CallToAction
+							title="Special Offers"
+							cardText="Limited-time deals on selected instruments and accessories"
+							buttonText="View Special Offers"
+							col="secondary"
+						/>
 					</div>
 				</div>
 			</section>
