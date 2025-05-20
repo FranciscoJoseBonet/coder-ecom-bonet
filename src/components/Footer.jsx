@@ -90,7 +90,7 @@ const Footer = () => {
 					</div>
 					<div className="col-md-6">
 						<ul className="list-inline text-center text-md-end mb-0">
-							{legals.map((item, index) => {
+							{legals.map((item) => {
 								return (
 									<li className="list-inline-item">
 										<a

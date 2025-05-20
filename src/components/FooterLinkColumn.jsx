@@ -1,7 +1,6 @@
 import FooterItem from "./FooterItem";
 
 const FooterLinkColumn = ({ title = "", LinkObj = {} }) => {
-	console.log(LinkObj);
 	return (
 		<div className="col-lg-2 col-md-6 col-6">
 			<h5 className="mb-3">{title}</h5>

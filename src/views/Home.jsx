@@ -1,0 +1,177 @@
+import { FaArrowRight, FaGuitar, FaDrum, FaHeadphones } from "react-icons/fa";
+import { GiSaxophone } from "react-icons/gi";
+import ProductCard from "../components/ProductCard.jsx";
+import CategoryCard from "../components/CategoryCard.jsx";
+
+// Sample featured products data
+const featuredProducts = [
+	{
+		id: 1,
+		name: "Gibson Les Paul Standard",
+		price: 2499.99,
+		image: "/placeholder.svg?height=300&width=300",
+		category: "Guitars",
+	},
+	{
+		id: 2,
+		name: "Yamaha P-125 Digital Piano",
+		price: 649.99,
+		image: "/placeholder.svg?height=300&width=300",
+		category: "Keyboards",
+	},
+	{
+		id: 3,
+		name: "Fender American Professional II",
+		price: 1699.99,
+		image: "/placeholder.svg?height=300&width=300",
+		category: "Guitars",
+	},
+	{
+		id: 4,
+		name: "Roland TD-17KVX V-Drums",
+		price: 1699.99,
+		image: "/placeholder.svg?height=300&width=300",
+		category: "Drums",
+	},
+];
+
+// Category data
+const categories = [
+	{
+		id: "strings",
+		name: "Strings",
+		description: "Guitars, Violins, Cellos & more",
+		icon: <FaGuitar size={36} />,
+		image: "/placeholder.svg?height=400&width=600",
+		color: "rgba(235, 94, 40, 0.1)",
+	},
+	{
+		id: "winds",
+		name: "Winds",
+		description: "Saxophones, Flutes, Clarinets & more",
+		icon: <GiSaxophone size={36} />,
+		image: "/placeholder.svg?height=400&width=600",
+		color: "rgba(52, 152, 219, 0.1)",
+	},
+	{
+		id: "percussion",
+		name: "Percussion",
+		description: "Drums, Cymbals, Percussion & more",
+		icon: <FaDrum size={36} />,
+		image: "/placeholder.svg?height=400&width=600",
+		color: "rgba(155, 89, 182, 0.1)",
+	},
+	{
+		id: "accessories",
+		name: "Accessories",
+		description: "Headphones, Cables, Stands & more",
+		icon: <FaHeadphones size={36} />,
+		image: "/placeholder.svg?height=400&width=600",
+		color: "rgba(46, 204, 113, 0.1)",
+	},
+];
+
+const HomePage = () => {
+	return (
+		<div>
+			{/* Hero */}
+			<section className="py-5 bg-light">
+				<div className="container">
+					<div className="row align-items-center">
+						<div className="col-lg-6 mb-5 mb-lg-0">
+							<h1 className="display-4 fw-bold mb-3">Find Your Perfect Sound</h1>
+							<p className="lead text-muted mb-4">
+								High-quality instruments for passionate musicians, from beginners to
+								professionals.
+							</p>
+							<div className="d-flex gap-3">
+								<a href="/shop" className="btn btn-dark btn-lg px-4 py-2">
+									Shop Now
+								</a>
+								<a href="/about" className="btn btn-outline-dark btn-lg px-4 py-2">
+									Learn More
+								</a>
+							</div>
+						</div>
+						<div className="col-lg-6">
+							<img
+								src="/placeholder.svg?height=500&width=700"
+								alt="Premium musical instruments"
+								className="img-fluid rounded shadow"
+							/>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* Productos destacadso */}
+			<section className="py-5">
+				<div className="container">
+					<div className="d-flex justify-content-between align-items-center mb-4">
+						<h2 className="mb-0">Featured Instruments</h2>
+						<a href="/shop" className="text-dark text-decoration-none">
+							View All <FaArrowRight className="ms-1" size={14} />
+						</a>
+					</div>
+					<div className="row g-4">
+						{featuredProducts.map((product) => (
+							<div key={product.id} className="col-sm-6 col-lg-3">
+								<ProductCard product={product} />
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			{/* Categorias */}
+			<section className="py-5 bg-light">
+				<div className="container">
+					<h2 className="mb-4">Shop by Category</h2>
+					<div className="row g-4">
+						{categories.map((category) => (
+							<div key={category.id} className="col-md-6">
+								<CategoryCard category={category} />
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			{/* Contenido adicional */}
+			<section className="py-5">
+				<div className="container">
+					<div className="row g-">
+						<div className="col-md-6">
+							<div className="card border-0 bg-dark text-white h-100">
+								<div className="card-body p-4">
+									<h3 className="card-title">New Arrivals</h3>
+									<p className="card-text">
+										Discover our latest collection of premium instruments.
+									</p>
+									<a href="/new-arrivals" className="btn btn-outline-light mt-2">
+										Explore New Arrivals
+									</a>
+								</div>
+							</div>
+						</div>
+						<div className="col-md-6">
+							<div className="card border-0 bg-secondary text-white h-100">
+								<div className="card-body p-4">
+									<h3 className="card-title">Special Offers</h3>
+									<p className="card-text">
+										Limited-time deals on selected instruments and accessories.
+									</p>
+									<a href="/special-offers" className="btn btn-outline-light mt-2">
+										View Special Offers
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	);
+};
+
+export default HomePage;
