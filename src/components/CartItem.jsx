@@ -1,3 +1,5 @@
+import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+
 const CartItem = ({ item }) => {
 	return (
 		<div className="card mb-3 border-0 shadow-sm">

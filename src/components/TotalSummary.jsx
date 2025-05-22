@@ -1,3 +1,5 @@
+import { FaShoppingCart, FaArrowLeft } from "react-icons/fa";
+
 const TotalSummary = ({ subtotal, tax, shipping }) => {
 	const total = subtotal + tax + shipping;
 
