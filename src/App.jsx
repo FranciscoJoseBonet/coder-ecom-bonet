@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import "./App.css";
+import CartPage from "./views/CartPage.jsx";
 
 function App() {
 	return (
@@ -14,7 +15,8 @@ function App() {
 				<Navbar />
 				{/* Página principal */}
 				<main className="flex-grow-1">
-					<HomePage />
+					{/* <HomePage /> */}
+					<CartPage />
 				</main>
 
 				<Footer />
