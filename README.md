@@ -1,12 +1,79 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🛒 Coder E-Commerce Presentation
 
-Currently, two official plugins are available:
+A responsive and modular **ecommerce web application** built with **React** as part of the Coderhouse React JS course. This project simulates a complete online store, featuring a product catalog, cart functionality, and user interface components for a modern shopping experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🧾 **Product List and Details**  
+  Displays items with images, prices, and descriptions. Users can browse and view product details dynamically.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🛍️ **Shopping Cart System**  
+  Add, remove, and manage quantities of products in the cart with automatic total calculation.
+
+- 🧩 **Component-Based Architecture**  
+  Built entirely with reusable React components for clarity and scalability.
+
+- 📦 **Mock Data with Firebase**  
+  Products and order data are handled via Firebase Firestore (simulated backend).
+
+- 📱 **Responsive Design**  
+  Mobile-first layout with flexible design for tablets and desktops.
+
+- ⚛️ **React Tools Used**  
+  `react-router-dom`, `useContext`, `useEffect`, `useState`, Firebase, and more.
+
+## 🛠️ Tech Stack
+
+- **Frontend:** React, JSX, CSS
+- **Routing:** React Router
+- **Database:** Firebase Firestore (for simulated persistence)
+- **State Management:** React Context API
+
+## 📁 Folder Structure
+
+```
+
+src/
+├── assets/           # Static assets (images, logos, icons)
+├── components/       # Reusable UI components
+├── context/          # CartContext for global state
+├── firebase/         # Firebase configuration
+├── pages/            # App views (Home, ProductList, Cart, etc.)
+├── App.jsx           # Main app wrapper
+└── main.jsx          # Entry point
+
+````
+
+## 🔧 Installation & Usage
+
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/FranciscoJoseBonet/coder-ecom-bonet
+   cd coder-ecom-bonet
+   
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Visit in browser:**
+
+   ```
+   http://localhost:5173
+   ```
+
+## 🧑‍💻 Author
+
+**Francisco José Bonet**
+Frontend developer.
+[GitHub](https://github.com/FranciscoJoseBonet)
+
+
