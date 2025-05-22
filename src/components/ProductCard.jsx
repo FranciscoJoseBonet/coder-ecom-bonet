@@ -15,7 +15,14 @@ const ProductCard = ({ product }) => {
 					{product.category}
 				</span>
 			</div>
-			<div className="card-body">
+			<div
+				className="card-body"
+				style={{
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "space-between",
+				}}
+			>
 				<h5 className="card-title">{product.name}</h5>
 				<p className="card-text fw-bold">${product.price.toFixed(2)}</p>
 				<div className="d-flex justify-content-between align-items-center">
