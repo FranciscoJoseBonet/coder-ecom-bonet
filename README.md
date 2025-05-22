@@ -1,5 +1,5 @@
 
-# 🛒 Coder Ecom Bonet
+# 🛒 Coder E-Commerce Presentation
 
 A responsive and modular **ecommerce web application** built with **React** as part of the Coderhouse React JS course. This project simulates a complete online store, featuring a product catalog, cart functionality, and user interface components for a modern shopping experience.
 
@@ -52,7 +52,7 @@ src/
    git clone https://github.com/FranciscoJoseBonet/coder-ecom-bonet
    cd coder-ecom-bonet
 ````
-
+````
 2. **Install dependencies:**
 
    ```bash
