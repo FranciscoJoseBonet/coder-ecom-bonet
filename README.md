@@ -51,8 +51,7 @@ src/
    ```bash
    git clone https://github.com/FranciscoJoseBonet/coder-ecom-bonet
    cd coder-ecom-bonet
-````
-````
+   
 2. **Install dependencies:**
 
    ```bash
