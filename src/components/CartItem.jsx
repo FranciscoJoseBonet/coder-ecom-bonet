@@ -2,17 +2,13 @@ import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import { fCurrency } from "../utils/FormatCurrency";
 import { useState } from "react";
 
-const CartItem = ({ item }) => {
-	let [quantity, setQuantity] = useState(item.quantity);
-
-	const handleIncrement = () => {
-		setQuantity((quantity += 1));
+const CartItem = ({ item, onQuantityChange }) => {
+	const handleIncrease = () => {
+		onQuantityChange(item.id, item.quantity + 1);
 	};
-	const handleDecrement = () => {
-		if (quantity <= 1) {
-			return;
-		}
-		setQuantity((quantity -= 1));
+	const handleDecrease = () => {
+		if (item.quantity <= 1) return;
+		onQuantityChange(item.id, item.quantity - 1);
 	};
 
 	return (
@@ -40,21 +36,21 @@ const CartItem = ({ item }) => {
 						<button
 							className="btn btn-outline-secondary pb-2"
 							type="button"
-							onClick={handleDecrement}
+							onClick={handleDecrease}
 						>
 							<FaMinus size={14} />
 						</button>
 						<input
 							type="text"
 							className="form-control text-center border border-secondary"
-							value={quantity}
+							value={item.quantity}
 							readOnly
 							aria-label="Quantity"
 						/>
 						<button
 							className="btn btn-outline-secondary pb-2"
 							type="button"
-							onClick={handleIncrement}
+							onClick={handleIncrease}
 						>
 							<FaPlus size={14} />
 						</button>

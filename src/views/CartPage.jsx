@@ -2,6 +2,8 @@ import VoidCart from "../components/VoidCart.jsx";
 import CartItem from "../components/CartItem.jsx";
 import TotalSummary from "../components/TotalSummary.jsx";
 
+import { useState } from "react";
+
 // Sample cart items data (for display purposes only)
 const sampleCartItems = [
 	{
@@ -29,13 +31,20 @@ const sampleCartItems = [
 
 const CartPage = () => {
 	let hasItems = sampleCartItems.length > 0;
-	let subtotal = sampleCartItems.reduce(
-		(acc, item) => acc + item.price * item.quantity,
-		0
-	);
 
-	let taxPercentage = 0.21; // Porcentaje fijo con el cual se calcula el impuesto sobre el total de la compra
-	let shipping = 6000; // Ahora es fijo, en la prox version se calcula en base a la distancia y el peso del envio
+	let [cartItems, setCartItems] = useState(sampleCartItems);
+
+	const updateItemQuantity = (id, newQuantity) => {
+		setCartItems((prevItems) =>
+			prevItems.map((item) =>
+				item.id === id ? { ...item, quantity: newQuantity } : item
+			)
+		);
+	};
+
+	const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+	const taxPercentage = 0.21; // Porcentaje fijo con el cual se calcula el impuesto sobre el total de la compra
+	const shipping = 6000; // Ahora es fijo, en la prox version se calcula en base a la distancia y el peso del envio
 
 	return (
 		<div className="container py-5">
@@ -53,8 +62,12 @@ const CartPage = () => {
 								<div className="col-md-1 text-end">Remove</div>
 							</div>
 
-							{sampleCartItems.map((item) => (
-								<CartItem key={item.id} item={item} />
+							{cartItems.map((item) => (
+								<CartItem
+									key={item.id}
+									item={item}
+									onQuantityChange={updateItemQuantity}
+								/>
 							))}
 						</div>
 						<div className="col-lg-4">
