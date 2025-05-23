@@ -7,34 +7,35 @@ const sampleCartItems = [
 	{
 		id: 1,
 		name: "Gibson Les Paul Standard",
-		price: 2499.99,
+		price: 62499.99,
 		quantity: 1,
 		image: "https://i.postimg.cc/GHLtXKKw/gibson.png",
 	},
 	{
 		id: 2,
 		name: "Yamaha P-125 Digital Piano",
-		price: 649.99,
+		price: 79649.99,
 		quantity: 1,
 		image: "https://i.postimg.cc/LhBhkwz3/yamaha.jpg",
 	},
 	{
 		id: 3,
 		name: "Fender American Professional II",
-		price: 1699.99,
+		price: 91699.99,
 		quantity: 1,
 		image: "https://http2.mlstatic.com/D_NQ_NP_734948-MLA70441977503_072023-O.webp",
 	},
 ];
 
 const CartPage = () => {
-	let hasItems = true;
-	let subtotal = 0;
+	let hasItems = sampleCartItems.length > 0;
+	let subtotal = sampleCartItems.reduce(
+		(acc, item) => acc + item.price * item.quantity,
+		0
+	);
 
-	let tax = 0; // Porcentaje fijo con el cual se calcula el impuesto sobre el total de la compra
-	let shipping = 0; // Ahora es fijo, en prox version se calcula en base a la distancia y el peso del envio
-
-	let total = tax + shipping + subtotal;
+	let taxPercentage = 0.21; // Porcentaje fijo con el cual se calcula el impuesto sobre el total de la compra
+	let shipping = 6000; // Ahora es fijo, en la prox version se calcula en base a la distancia y el peso del envio
 
 	return (
 		<div className="container py-5">
@@ -55,7 +56,13 @@ const CartPage = () => {
 							))}
 						</div>
 						<div className="col-lg-4">
-							{<TotalSummary subtotal={subtotal} tax={tax} shipping={shipping} />}
+							{
+								<TotalSummary
+									subtotal={subtotal}
+									taxPercentage={taxPercentage}
+									shipping={shipping}
+								/>
+							}
 						</div>
 					</>
 				) : (
