@@ -43,7 +43,9 @@ const CartPage = () => {
 				{hasItems ? (
 					<>
 						<div className="col-lg-8 mb-4 mb-lg-0">
-							<h1 className="mb-4">Shopping Cart</h1>
+							<h1 className="mb-4 text-lg-start text-md-start text-center">
+								Shopping Cart
+							</h1>
 							<div className="d-none d-md-flex fw-bold text-muted mb-3 px-4">
 								<div className="col-md-6">Product</div>
 								<div className="col-md-2 text-center">Quantity</div>

@@ -57,7 +57,7 @@ const Footer = () => {
 	return (
 		<footer className="bg-light pt-5 pb-3">
 			<div className="container">
-				<div className="row g-4">
+				<div className="row g-4 ">
 					{/* Primera columna */}
 					<div className="col-lg-4 col-md-6">
 						<div className="mb-4">
