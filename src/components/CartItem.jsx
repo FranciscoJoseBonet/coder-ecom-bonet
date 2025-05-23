@@ -1,4 +1,5 @@
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import { fCurrency } from "../utils/FormatCurrency";
 
 const CartItem = ({ item }) => {
 	return (
@@ -39,7 +40,7 @@ const CartItem = ({ item }) => {
 					</div>
 				</div>
 				<div className="col-md-3 col-4 text-center">
-					<span className="fw-bold">${item.price.toFixed(2)}</span>
+					<span className="fw-bold">{fCurrency(item.price)}</span>
 				</div>
 				<div className="col-md-1 col-4 text-end">
 					<button className="btn btn-sm btn-outline-danger p-2">

@@ -1,5 +1,5 @@
 import { FaArrowLeft } from "react-icons/fa";
-import fCurrency from "../utils/FormatCurrency.js";
+import { fCurrency } from "../utils/FormatCurrency";
 
 const TotalSummary = ({ subtotal, taxPercentage, shipping }) => {
 	let taxExtraValue = subtotal * taxPercentage;
