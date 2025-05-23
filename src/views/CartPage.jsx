@@ -9,21 +9,21 @@ const sampleCartItems = [
 		name: "Gibson Les Paul Standard",
 		price: 2499.99,
 		quantity: 1,
-		image: "/placeholder.svg?height=100&width=100",
+		image: "https://i.postimg.cc/GHLtXKKw/gibson.png",
 	},
 	{
 		id: 2,
 		name: "Yamaha P-125 Digital Piano",
 		price: 649.99,
 		quantity: 1,
-		image: "/placeholder.svg?height=100&width=100",
+		image: "https://i.postimg.cc/LhBhkwz3/yamaha.jpg",
 	},
 	{
 		id: 3,
-		name: "Shure SM58 Microphone",
-		price: 99.99,
-		quantity: 2,
-		image: "/placeholder.svg?height=100&width=100",
+		name: "Fender American Professional II",
+		price: 1699.99,
+		image: "https://http2.mlstatic.com/D_NQ_NP_734948-MLA70441977503_072023-O.webp",
+		category: "Guitars",
 	},
 ];
 

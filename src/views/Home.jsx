@@ -114,7 +114,7 @@ const HomePage = () => {
 				<div className="container">
 					<div className="d-flex justify-content-between align-items-center mb-4">
 						<h2 className="mb-0">Featured Instruments</h2>
-						<a href="/shop" className="text-dark text-decoration-none">
+						<a href="#" className="text-dark text-decoration-none">
 							View All <FaArrowRight className="ms-1" size={14} />
 						</a>
 					</div>

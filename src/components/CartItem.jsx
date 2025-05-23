@@ -2,7 +2,10 @@ import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 
 const CartItem = ({ item }) => {
 	return (
-		<div className="card mb-3 border-0 shadow-sm">
+		<div
+			className="card mb-4 border-0 bg-light rounded-3"
+			style={{ boxShadow: "0 0.5rem 1rem rgba(0,0,0,0.1)" }}
+		>
 			<div className="row g-0 align-items-center p-2">
 				<div className="col-md-2 col-4">
 					<img src={item.image} alt={item.name} className="img-fluid rounded" />
