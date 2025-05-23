@@ -1,12 +1,12 @@
-import { FaShoppingCart, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
 
 const TotalSummary = ({ subtotal, tax, shipping }) => {
 	const total = subtotal + tax + shipping;
 
 	return (
 		<div
-			className="card border-0 bg-light rounded-3 mt-4 position-sticky top-0"
-			style={{ boxShadow: "0 0.5rem 1rem rgba(0,0,0,0.1)" }}
+			className="card border-0 bg-light rounded-3 position-sticky"
+			style={{ boxShadow: "0 0.5rem 1rem rgba(0,0,0,0.1)", top: "70px" }}
 		>
 			<div className="card-body">
 				<h4 className="card-title mb-4">Order Summary</h4>
