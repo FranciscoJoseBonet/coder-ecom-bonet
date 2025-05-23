@@ -3,9 +3,9 @@ import "../css/CartWidget.css";
 
 const CartWidget = () => {
 	return (
-		<div className="cart__widget">
+		<div className="cart__widget position-relative">
 			<FaShoppingCart className="cart__icon" />
-			<span className="cart__count">3</span>
+			<span className="cart__count">5</span>
 		</div>
 	);
 };

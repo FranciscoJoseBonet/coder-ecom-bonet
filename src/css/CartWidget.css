@@ -1,23 +1,29 @@
 .cart__widget {
 	position: relative;
-	display: flex;
-	align-items: center;
+	display: inline-block;
 	cursor: pointer;
 }
 
 .cart__icon {
-	font-size: 1.5rem;
-	color: #e5e5e5;
+	font-size: 1.2rem; /* Más grande */
+	color: #333;
+	transition: transform 0.2s ease;
+}
+
+.cart__widget:hover .cart__icon {
+	transform: scale(1.1);
+	color: #000;
 }
 
 .cart__count {
 	position: absolute;
-	top: -6px;
-	right: -10px;
-	background-color: crimson;
+	top: -8px;
+	right: -8px;
+	background-color: #ff1d1d; /* Rojo Bootstrap */
 	color: white;
-	font-size: 0.75rem;
+	font-size: 0.62rem;
+	font-weight: bold;
 	padding: 2px 6px;
 	border-radius: 50%;
-	font-weight: bold;
+	box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
 }
