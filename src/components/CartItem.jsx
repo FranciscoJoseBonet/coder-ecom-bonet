@@ -1,7 +1,20 @@
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import { fCurrency } from "../utils/FormatCurrency";
+import { useState } from "react";
 
 const CartItem = ({ item }) => {
+	let [quantity, setQuantity] = useState(item.quantity);
+
+	const handleIncrement = () => {
+		setQuantity((quantity += 1));
+	};
+	const handleDecrement = () => {
+		if (quantity <= 1) {
+			return;
+		}
+		setQuantity((quantity -= 1));
+	};
+
 	return (
 		<div
 			className="card mb-4 border-0 bg-white rounded-3"
@@ -24,17 +37,25 @@ const CartItem = ({ item }) => {
 				</div>
 				<div className="col-md-2 col-4">
 					<div className="input-group input-group-sm">
-						<button className="btn btn-outline-secondary pb-2" type="button">
+						<button
+							className="btn btn-outline-secondary pb-2"
+							type="button"
+							onClick={handleDecrement}
+						>
 							<FaMinus size={14} />
 						</button>
 						<input
 							type="text"
 							className="form-control text-center border border-secondary"
-							value={item.quantity}
+							value={quantity}
 							readOnly
 							aria-label="Quantity"
 						/>
-						<button className="btn btn-outline-secondary pb-2" type="button">
+						<button
+							className="btn btn-outline-secondary pb-2"
+							type="button"
+							onClick={handleIncrement}
+						>
 							<FaPlus size={14} />
 						</button>
 					</div>

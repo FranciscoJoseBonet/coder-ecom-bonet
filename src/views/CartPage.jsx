@@ -22,7 +22,7 @@ const sampleCartItems = [
 		id: 3,
 		name: "Fender American Professional II",
 		price: 91699.99,
-		quantity: 1,
+		quantity: 3,
 		image: "https://http2.mlstatic.com/D_NQ_NP_734948-MLA70441977503_072023-O.webp",
 	},
 ];
