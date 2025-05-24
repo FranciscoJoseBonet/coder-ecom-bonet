@@ -1,3 +1,5 @@
+import { fCurrency } from "../utils/FormatCurrency";
+
 const ProductCard = ({ product }) => {
 	return (
 		<div className="card h-100 border-0 shadow-sm">
@@ -24,7 +26,7 @@ const ProductCard = ({ product }) => {
 				}}
 			>
 				<h5 className="card-title">{product.name}</h5>
-				<p className="card-text fw-bold">${product.price.toFixed(2)}</p>
+				<p className="card-text fw-bold">{fCurrency(product.price)}</p>
 				<div className="d-flex justify-content-between align-items-center">
 					<button className="btn btn-outline-dark btn-sm">Add to Cart</button>
 					<a href={`/product/${product.id}`} className="btn btn-link text-dark p-0">

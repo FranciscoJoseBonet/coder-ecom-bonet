@@ -33,7 +33,7 @@ const NavDropdown = () => {
 					<hr className="dropdown-divider" />
 				</li>
 				<li>
-					<a className="dropdown-item" href="/categories">
+					<a className="dropdown-item" href="/category/all">
 						All Categories
 					</a>
 				</li>
