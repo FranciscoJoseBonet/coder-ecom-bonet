@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const NavDropdown = () => {
 	const dropItems = {
 		guitars: "Guitars",
@@ -8,7 +10,7 @@ const NavDropdown = () => {
 	};
 	return (
 		<li className="nav-item dropdown">
-			<a
+			<Link
 				className="nav-link dropdown-toggle"
 				href="#"
 				id="navbarDropdown"
@@ -17,15 +19,15 @@ const NavDropdown = () => {
 				aria-expanded="false"
 			>
 				Instruments
-			</a>
+			</Link>
 			<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
 				{Object.keys(dropItems).map((item) => {
 					const value = dropItems[item];
 					return (
 						<li key={value + " nav"}>
-							<a href={`/category/${item}`} className="dropdown-item">
+							<Link to={`/category/${item}`} className="dropdown-item">
 								{value}
-							</a>
+							</Link>
 						</li>
 					);
 				})}
@@ -33,9 +35,9 @@ const NavDropdown = () => {
 					<hr className="dropdown-divider" />
 				</li>
 				<li>
-					<a className="dropdown-item" href="/category/all">
+					<Link className="dropdown-item" to="/category/all">
 						All Categories
-					</a>
+					</Link>
 				</li>
 			</ul>
 		</li>

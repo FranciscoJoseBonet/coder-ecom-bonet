@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import { fCurrency } from "../utils/FormatCurrency";
 
 const ProductCard = ({ product }) => {
@@ -29,9 +31,9 @@ const ProductCard = ({ product }) => {
 				<p className="card-text fw-bold">{fCurrency(product.price)}</p>
 				<div className="d-flex justify-content-between align-items-center">
 					<button className="btn btn-outline-dark btn-sm">Add to Cart</button>
-					<a href={`/product/${product.id}`} className="btn btn-link text-dark p-0">
+					<Link to={`/product/${product.id}`} className="btn btn-link text-dark p-0">
 						View Details
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

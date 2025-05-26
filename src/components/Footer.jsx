@@ -7,6 +7,7 @@ import {
 	FaInstagram,
 	FaYoutube,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import Logo from "./Logo";
 import WebLinks from "./WebLinks";
@@ -133,9 +134,9 @@ const Footer = () => {
 							{legals.map((item, index) => {
 								return (
 									<li className="list-inline-item" key={index}>
-										<a href="/legals" className="text-decoration-none text-muted small">
+										<Link to="/legals" className="text-decoration-none text-muted small">
 											{item} |
-										</a>
+										</Link>
 									</li>
 								);
 							})}

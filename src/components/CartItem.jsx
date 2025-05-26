@@ -1,6 +1,5 @@
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import { fCurrency } from "../utils/FormatCurrency";
-import { useState } from "react";
 
 const CartItem = ({ item, onQuantityChange }) => {
 	const handleIncrease = () => {

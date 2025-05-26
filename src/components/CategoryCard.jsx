@@ -1,4 +1,5 @@
 import { FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
 	return (
@@ -14,12 +15,12 @@ const CategoryCard = ({ category }) => {
 					<div className="card-body">
 						<h5 className="card-title">{category.name}</h5>
 						<p className="card-text text-muted">{category.description}</p>
-						<a
-							href={`/category/${category.id}`}
+						<Link
+							to={`/category/${category.id}`}
 							className="text-dark text-decoration-none"
 						>
 							Browse {category.name} <FaArrowRight className="ms-1" size={14} />
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>

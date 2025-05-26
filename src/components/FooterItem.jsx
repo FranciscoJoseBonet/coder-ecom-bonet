@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 const FooterItem = ({ item, pathEnd }) => {
 	return (
 		<li className="mb-2">
-			<a href={`/category/${pathEnd}`} className="text-decoration-none text-muted">
+			<Link to={`/category/${pathEnd}`} className="text-decoration-none text-muted">
 				{item}
-			</a>
+			</Link>
 		</li>
 	);
 };

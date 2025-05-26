@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CallToAction = (props) => {
 	return (
 		<div className="col-md-6 py-1">
@@ -5,9 +7,9 @@ const CallToAction = (props) => {
 				<div className="card-body p-3 d-flex flex-column justify-content-between">
 					<h3 className="card-title">{props.title}</h3>
 					<p className="card-text">{props.cardText}</p>
-					<a href="/special-offers" className="btn btn-outline-light mt-2">
+					<Link to="/special-offers" className="btn btn-outline-light mt-2">
 						{props.buttonText}
-					</a>
+					</Link>
 				</div>
 			</div>
 		</div>

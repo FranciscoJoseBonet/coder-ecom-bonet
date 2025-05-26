@@ -1,5 +1,6 @@
 import { FaArrowRight, FaGuitar, FaDrum, FaHeadphones } from "react-icons/fa";
 import { GiSaxophone } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 {
 	/* Importacion de los componentes a usar */
@@ -90,12 +91,12 @@ const HomePage = () => {
 								professionals.
 							</p>
 							<div className="d-flex gap-3 d-flex justify-content-center">
-								<a href="/shop" className="btn btn-dark btn-lg px-4 py-2 w-100">
+								<Link to="/shop" className="btn btn-dark btn-lg px-4 py-2 w-100">
 									Shop Now
-								</a>
-								<a href="/about" className="btn btn-outline-dark btn-lg px-4 py-2 w-100">
+								</Link>
+								<Link to="/about" className="btn btn-outline-dark btn-lg px-4 py-2 w-100">
 									Learn More
-								</a>
+								</Link>
 							</div>
 						</div>
 						<div className="col-lg-6">
@@ -114,9 +115,9 @@ const HomePage = () => {
 				<div className="container">
 					<div className="d-flex justify-content-between align-items-center mb-4">
 						<h2 className="mb-0">Featured Instruments</h2>
-						<a href="#" className="text-dark text-decoration-none">
+						<Link to="#" className="text-dark text-decoration-none">
 							View All <FaArrowRight className="ms-1" size={14} />
-						</a>
+						</Link>
 					</div>
 					<div className="row g-4">
 						{featuredProducts.map((product) => (
