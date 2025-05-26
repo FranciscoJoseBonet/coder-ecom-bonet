@@ -3,6 +3,7 @@ import Footer from "./components/Footer.jsx";
 
 import HomePage from "./views/Home.jsx";
 import CartPage from "./views/CartPage.jsx";
+import NotFound from "./views/NotFound.jsx";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -18,7 +19,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<HomePage />} />
 				<Route path="/cart" element={<CartPage />} />
-				<Route path="*" element={<h1 className="text-center">404 Not Found</h1>} />
+				<Route path="*" element={<NotFound />} />
 				<Route parth="/category/:categoryId" />
 			</Routes>
 			<Footer />
