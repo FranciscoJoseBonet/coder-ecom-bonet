@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 
 import { fetchProducts } from "../mock/AsyncService";
 
-import MobileFilterToggle from "../components/ShopMobileFilterToggler";
-import CategorySidebar from "../components/ShopSidebar";
 import ShopProductCard from "../components/ShopProductCard";
-import ShopPagination from "../components/ShopPagination";
 import ShopHeader from "../components/ShopHeader";
 
 const Shop = () => {
@@ -24,20 +21,8 @@ const Shop = () => {
 	return (
 		<div>
 			<ShopHeader />
-
 			<div className="container">
 				<div className="row">
-					{/* Sidebar */}
-					<div className="col-lg-3">
-						<MobileFilterToggle />
-						<div className="d-none d-md-block">
-							<CategorySidebar />
-						</div>
-						<div className="collapse d-md-none" id="mobileFilters">
-							<CategorySidebar />
-						</div>
-					</div>
-
 					{/* Main Content */}
 					<div className="col-lg-9">
 						{/* Results Info */}
@@ -68,9 +53,6 @@ const Shop = () => {
 								</div>
 							))}
 						</div>
-
-						{/* Load More / Pagination */}
-						<ShopPagination />
 					</div>
 				</div>
 			</div>
