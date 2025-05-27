@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const NavDropdown = () => {
 	const dropItems = {
 		guitars: "Guitars",
-		keyboards: "keyboards",
+		keyboards: "Keyboards",
 		drums: "Drums",
-		winds: "wind instruments",
+		winds: "Winds",
 		acc: "Accesories",
 	};
 	return (
@@ -35,7 +35,7 @@ const NavDropdown = () => {
 					<hr className="dropdown-divider" />
 				</li>
 				<li>
-					<Link className="dropdown-item" to="/category/all">
+					<Link className="dropdown-item" to="/shop">
 						All Categories
 					</Link>
 				</li>

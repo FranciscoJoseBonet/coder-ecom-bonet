@@ -33,10 +33,8 @@ const Navbar = () => {
 				<div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
 					<ul className="navbar-nav me-auto mb-2 mb-lg-0">
 						<NavItem href="/" label="Home" />
+						<NavItem href="/shop" label="Shop" />
 						<NavDropdown />
-						<NavItem href="/deals" label="Deals" />
-						<NavItem href="/about" label="About" />
-						<NavItem href="/contact" label="Contact" />
 					</ul>
 
 					<SearchForm />

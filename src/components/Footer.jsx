@@ -83,10 +83,10 @@ const Footer = () => {
 					</div>
 
 					{/* Segunda Columna */}
-					<FooterLinkColumn title="Shop" LinkObj={shopLinks} />
+					<FooterLinkColumn title="Shop" LinkObj={shopLinks} _type="category" />
 
 					{/* Tercera Columna */}
-					<FooterLinkColumn title="Support" LinkObj={SuppLinks} />
+					<FooterLinkColumn title="Support" LinkObj={SuppLinks} _type="support" />
 
 					{/* Cuarta Columna */}
 					<div className="col-lg-4 col-md-6">
