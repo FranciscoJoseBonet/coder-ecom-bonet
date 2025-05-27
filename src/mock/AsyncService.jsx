@@ -1,5 +1,6 @@
-import { FaArrowRight, FaGuitar, FaDrum, FaHeadphones } from "react-icons/fa";
-import { GiSaxophone } from "react-icons/gi";
+import { FaGuitar, FaDrum, FaHeadphones } from "react-icons/fa";
+import { GiPianoKeys, GiSaxophone } from "react-icons/gi";
+import { FaFacebook, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
 
 const timeToLoad = 1200;
 let error = false;
@@ -146,7 +147,7 @@ const categories = [
 		description: "Guitars, Violins, Cellos & more",
 		icon: <FaGuitar size={36} />,
 		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(235, 94, 40, 0.1)",
+		color: "rgba(235, 94, 40, 0.33)",
 	},
 	{
 		id: "winds",
@@ -154,7 +155,7 @@ const categories = [
 		description: "Saxophones, Flutes, Clarinets & more",
 		icon: <GiSaxophone size={36} />,
 		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(52, 152, 219, 0.1)",
+		color: "rgba(52, 152, 219, 0.33)",
 	},
 	{
 		id: "percussion",
@@ -162,7 +163,15 @@ const categories = [
 		description: "Drums, Cymbals, Percussion & more",
 		icon: <FaDrum size={36} />,
 		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(155, 89, 182, 0.1)",
+		color: "rgba(155, 89, 182, 0.33)",
+	},
+	{
+		id: "keyboards",
+		name: "Keyboards",
+		description: "Organs, Pianos, Synthetizers & more",
+		icon: <GiPianoKeys size={36} />,
+		image: "/placeholder.svg?height=400&width=600",
+		color: "rgba(46, 204, 113, 0.33)",
 	},
 	{
 		id: "accessories",
@@ -170,7 +179,7 @@ const categories = [
 		description: "Headphones, Cables, Stands & more",
 		icon: <FaHeadphones size={36} />,
 		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(46, 204, 113, 0.1)",
+		color: "rgba(46, 204, 112, 0.33)",
 	},
 ];
 
@@ -201,6 +210,41 @@ export const fetchSuppLinks = () => {
 				resolve(suppLinks);
 			} else {
 				reject("Ocurrió un error al cargar los links de soporte");
+			}
+		}, timeToLoad);
+	});
+};
+
+const websLinks = [
+	{
+		id: "facebook-link-footer",
+		url: "url-to-facebook",
+		icon: <FaFacebook />,
+	},
+	{
+		id: "instagram-link-footer",
+		url: "url-to-instagram",
+		icon: <FaInstagram />,
+	},
+	{
+		id: "twitter-link-footer",
+		url: "url-to-twitter",
+		icon: <FaTwitter />,
+	},
+	{
+		id: "youtube-link-footer",
+		url: "url-to-youtube",
+		icon: <FaYoutube />,
+	},
+];
+
+export const fetchWebsLinks = () => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (!error) {
+				resolve(websLinks);
+			} else {
+				reject("Error al cargar los links de las webs");
 			}
 		}, timeToLoad);
 	});

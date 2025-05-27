@@ -1,15 +1,7 @@
-import {
-	FaEnvelope,
-	FaPhone,
-	FaMapMarkerAlt,
-	FaFacebook,
-	FaTwitter,
-	FaInstagram,
-	FaYoutube,
-} from "react-icons/fa";
+import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { fetchCategories, fetchSuppLinks } from "../mock/AsyncService";
+import { fetchCategories, fetchSuppLinks, fetchWebsLinks } from "../mock/AsyncService";
 
 import Logo from "./Logo";
 import WebLinks from "./WebLinks";
@@ -18,6 +10,7 @@ import FooterLinkColumn from "./FooterLinkColumn";
 const Footer = () => {
 	const [categories, setCategories] = useState([]);
 	const [suppLinks, setSuppLinks] = useState([]);
+	const [webObjects, setWebOjects] = useState([]);
 
 	useEffect(() => {
 		fetchCategories()
@@ -35,32 +28,19 @@ const Footer = () => {
 				setSuppLinks(data);
 			})
 			.catch((error) => {
-				console.log("Se produjo un error al cargar los datos: ", error);
+				console.error("Se produjo un error al cargar los datos: ", error);
 			});
 	}, []);
 
-	const webObjects = [
-		{
-			id: "facebook-link-footer",
-			url: "url-to-facebook",
-			icon: <FaFacebook />,
-		},
-		{
-			id: "instagram-link-footer",
-			url: "url-to-instagram",
-			icon: <FaInstagram />,
-		},
-		{
-			id: "twitter-link-footer",
-			url: "url-to-twitter",
-			icon: <FaTwitter />,
-		},
-		{
-			id: "youtube-link-footer",
-			url: "url-to-youtube",
-			icon: <FaYoutube />,
-		},
-	];
+	useEffect(() => {
+		fetchWebsLinks()
+			.then((data) => {
+				setWebOjects(data);
+			})
+			.catch((error) => {
+				console.error("Se produjo un error al cargar los datos: ", error);
+			});
+	}, []);
 
 	const legals = ["Privacy Policy", "Terms of Service", "Sitemap"];
 
@@ -135,7 +115,7 @@ const Footer = () => {
 				<div className="row align-items-center">
 					<div className="col-md-6 text-center text-md-start">
 						<p className="text-muted mb-md-0">
-							&copy; {new Date().getFullYear()} B'nT. All rights reserved.
+							&copy; {new Date().getFullYear()} RbMusic | by Reboot - All rights reserved.
 						</p>
 					</div>
 					<div className="col-md-6">
