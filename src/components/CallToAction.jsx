@@ -7,7 +7,7 @@ const CallToAction = (props) => {
 				<div className="card-body p-3 d-flex flex-column justify-content-between">
 					<h3 className="card-title">{props.title}</h3>
 					<p className="card-text">{props.cardText}</p>
-					<Link to="/special-offers" className="btn btn-outline-light mt-2">
+					<Link to={`${props.link}`} className="btn btn-outline-light mt-2">
 						{props.buttonText}
 					</Link>
 				</div>

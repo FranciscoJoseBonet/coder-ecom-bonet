@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 import { fetchProducts, fetchCategories } from "../mock/AsyncService.jsx";
 
-import ProductCard from "../components/ProductCard.jsx";
+import FeaturedProductCard from "../components/FeaturedProductCard.jsx";
 import CategoryCard from "../components/CategoryCard.jsx";
 import CallToAction from "../components/CallToAction.jsx";
 
@@ -70,14 +70,14 @@ const HomePage = () => {
 				<div className="container">
 					<div className="d-flex justify-content-between align-items-center mb-4">
 						<h2 className="mb-0">Featured Instruments</h2>
-						<Link to="#" className="text-dark text-decoration-none">
+						<Link to="/shop" className="text-dark text-decoration-none">
 							View All <FaArrowRight className="ms-1" size={14} />
 						</Link>
 					</div>
 					<div className="row g-4">
 						{featuredProducts.map((product) => (
 							<div key={product.id} className="col-sm-6 col-lg-3">
-								<ProductCard product={product} />
+								<FeaturedProductCard product={product} />
 							</div>
 						))}
 					</div>
@@ -107,12 +107,14 @@ const HomePage = () => {
 							cardText="Discover our latest collection of premium instruments"
 							buttonText="Explore New Arrivals"
 							col="dark"
+							link="new-arrivals"
 						/>
 						<CallToAction
 							title="Special Offers"
 							cardText="Limited-time deals on selected instruments and accessories"
 							buttonText="View Special Offers"
 							col="secondary"
+							link="discounts"
 						/>
 					</div>
 				</div>

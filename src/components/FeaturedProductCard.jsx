@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { fCurrency } from "../utils/FormatCurrency";
 
-const ProductCard = ({ product }) => {
+const FeaturedProductCard = ({ product }) => {
 	return (
 		<div className="card h-100 border-0 shadow-sm">
 			<div
@@ -40,4 +40,4 @@ const ProductCard = ({ product }) => {
 	);
 };
 
-export default ProductCard;
+export default FeaturedProductCard;
