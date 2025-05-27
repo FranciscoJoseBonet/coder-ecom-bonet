@@ -2,37 +2,22 @@ import VoidCart from "../components/VoidCart.jsx";
 import CartItem from "../components/CartItem.jsx";
 import TotalSummary from "../components/TotalSummary.jsx";
 
-import { useState } from "react";
-
-// Sample cart items data (for display purposes only)
-const sampleCartItems = [
-	{
-		id: 1,
-		name: "Gibson Les Paul Standard",
-		price: 62499.99,
-		quantity: 1,
-		image: "https://i.postimg.cc/GHLtXKKw/gibson.png",
-	},
-	{
-		id: 2,
-		name: "Yamaha P-125 Digital Piano",
-		price: 79649.99,
-		quantity: 1,
-		image: "https://i.postimg.cc/LhBhkwz3/yamaha.jpg",
-	},
-	{
-		id: 3,
-		name: "Fender American Professional II",
-		price: 91699.99,
-		quantity: 3,
-		image: "https://http2.mlstatic.com/D_NQ_NP_734948-MLA70441977503_072023-O.webp",
-	},
-];
+import { useEffect, useState } from "react";
+import { fetchProducts } from "../mock/AsyncService.jsx";
 
 const CartPage = () => {
-	let hasItems = sampleCartItems.length > 0;
+	const [cartItems, setCartItems] = useState([]);
 
-	let [cartItems, setCartItems] = useState(sampleCartItems);
+	useEffect(() => {
+		fetchProducts()
+			.then((data) => {
+				const sample = data.slice(0, 3);
+				setCartItems(sample);
+			})
+			.catch((error) => {
+				console.error("No se pudo resolver el pedido de los productos: ", error);
+			});
+	}, [cartItems]);
 
 	const updateItemQuantity = (id, newQuantity) => {
 		setCartItems((prevItems) =>
@@ -42,9 +27,10 @@ const CartPage = () => {
 		);
 	};
 
+	const hasItems = cartItems.length > 0;
 	const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
-	const taxPercentage = 0.21; // Porcentaje fijo con el cual se calcula el impuesto sobre el total de la compra
-	const shipping = 6000; // Ahora es fijo, en la prox version se calcula en base a la distancia y el peso del envio
+	const taxPercentage = 0.21;
+	const shipping = hasItems ? 6000 : 0;
 
 	return (
 		<div className="container py-5">
@@ -71,13 +57,11 @@ const CartPage = () => {
 							))}
 						</div>
 						<div className="col-lg-4">
-							{
-								<TotalSummary
-									subtotal={subtotal}
-									taxPercentage={taxPercentage}
-									shipping={shipping}
-								/>
-							}
+							<TotalSummary
+								subtotal={subtotal}
+								taxPercentage={taxPercentage}
+								shipping={shipping}
+							/>
 						</div>
 					</>
 				) : (

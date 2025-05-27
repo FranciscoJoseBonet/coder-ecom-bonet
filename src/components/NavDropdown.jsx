@@ -1,32 +1,38 @@
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { fetchCategories } from "../mock/AsyncService";
 
 const NavDropdown = () => {
-	const dropItems = {
-		guitars: "Guitars",
-		keyboards: "Keyboards",
-		drums: "Drums",
-		winds: "Winds",
-		acc: "Accesories",
-	};
+	const [categories, setCategories] = useState([]);
+
+	useEffect(() => {
+		fetchCategories()
+			.then((data) => {
+				setCategories(data);
+			})
+			.catch((error) => {
+				console.error("Hubo un error al cargar los datos: ", error);
+			});
+	}, []);
+
 	return (
 		<li className="nav-item dropdown">
 			<Link
 				className="nav-link dropdown-toggle"
-				href="#"
 				id="navbarDropdown"
 				role="button"
 				data-bs-toggle="dropdown"
 				aria-expanded="false"
 			>
-				Instruments
+				Categories
 			</Link>
 			<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-				{Object.keys(dropItems).map((item) => {
-					const value = dropItems[item];
+				{categories.map((categ) => {
+					const label = categ.name;
 					return (
-						<li key={value + " nav"}>
-							<Link to={`/category/${item}`} className="dropdown-item">
-								{value}
+						<li key={categ.id + "nav"}>
+							<Link to={`/category/${categ.id}`} className="dropdown-item">
+								{label}
 							</Link>
 						</li>
 					);

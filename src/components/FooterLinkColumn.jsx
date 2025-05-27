@@ -5,9 +5,16 @@ const FooterLinkColumn = ({ title = "", LinkObj = {}, _type = "" }) => {
 		<div className="col-lg-2 col-md-6 col-6">
 			<h5 className="mb-3">{title}</h5>
 			<ul className="list-unstyled">
-				{Object.keys(LinkObj).map((link) => {
-					const value = LinkObj[link];
-					return <FooterItem key={link} item={value} pathEnd={link} type={_type} />;
+				{LinkObj.map((categ) => {
+					const value = categ.name;
+					return (
+						<FooterItem
+							key={categ.id + "footer"}
+							item={value}
+							pathEnd={categ.id}
+							type={_type}
+						/>
+					);
 				})}
 			</ul>
 		</div>

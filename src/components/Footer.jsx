@@ -8,27 +8,36 @@ import {
 	FaYoutube,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { fetchCategories, fetchSuppLinks } from "../mock/AsyncService";
 
 import Logo from "./Logo";
 import WebLinks from "./WebLinks";
 import FooterLinkColumn from "./FooterLinkColumn";
 
 const Footer = () => {
-	const shopLinks = {
-		guitars: "Guitars",
-		keyboards: "Keyboards",
-		drums: "Drums",
-		winds: "Wind Instruments",
-		acc: "Accesories",
-	};
+	const [categories, setCategories] = useState([]);
+	const [suppLinks, setSuppLinks] = useState([]);
 
-	const SuppLinks = {
-		contact: "Contact Us",
-		faq: "FAQs",
-		shipping: "Shipping Info",
-		returns: "Returns & Exchanges",
-		warranty: "Warranty",
-	};
+	useEffect(() => {
+		fetchCategories()
+			.then((data) => {
+				setCategories(data);
+			})
+			.catch((error) => {
+				console.error("Hubo un error al cargar los datos: ", error);
+			});
+	}, []);
+
+	useEffect(() => {
+		fetchSuppLinks()
+			.then((data) => {
+				setSuppLinks(data);
+			})
+			.catch((error) => {
+				console.log("Se produjo un error al cargar los datos: ", error);
+			});
+	}, []);
 
 	const webObjects = [
 		{
@@ -83,10 +92,10 @@ const Footer = () => {
 					</div>
 
 					{/* Segunda Columna */}
-					<FooterLinkColumn title="Shop" LinkObj={shopLinks} _type="category" />
+					<FooterLinkColumn title="Shop" LinkObj={categories} _type="category" />
 
 					{/* Tercera Columna */}
-					<FooterLinkColumn title="Support" LinkObj={SuppLinks} _type="support" />
+					<FooterLinkColumn title="Support" LinkObj={suppLinks} _type="support" />
 
 					{/* Cuarta Columna */}
 					<div className="col-lg-4 col-md-6">

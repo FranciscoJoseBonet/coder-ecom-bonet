@@ -1,86 +1,41 @@
 import { FaArrowRight, FaGuitar, FaDrum, FaHeadphones } from "react-icons/fa";
 import { GiSaxophone } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-{
-	/* Importacion de los componentes a usar */
-}
+import { fetchProducts, fetchCategories } from "../mock/AsyncService.jsx";
+
 import ProductCard from "../components/ProductCard.jsx";
 import CategoryCard from "../components/CategoryCard.jsx";
 import CallToAction from "../components/CallToAction.jsx";
 
-// Data de los productos inventada
-const featuredProducts = [
-	{
-		id: 1,
-		name: "Gibson Les Paul Standard",
-		price: 2499.99,
-		image: "https://i.postimg.cc/GHLtXKKw/gibson.png",
-		category: "Guitars",
-	},
-	{
-		id: 2,
-		name: "Yamaha P-125 Digital Piano",
-		price: 649.99,
-		image: "https://i.postimg.cc/LhBhkwz3/yamaha.jpg",
-		category: "Keyboards",
-	},
-	{
-		id: 3,
-		name: "Fender American Professional II",
-		price: 1699.99,
-		image: "https://http2.mlstatic.com/D_NQ_NP_734948-MLA70441977503_072023-O.webp",
-		category: "Guitars",
-	},
-	{
-		id: 4,
-		name: "Roland TD-17KVX V-Drums",
-		price: 1699.99,
-		image: "https://i.postimg.cc/ZCwR2Ns9/roland-Drum.jpg",
-		category: "Drums",
-	},
-];
-
-// Category data
-const categories = [
-	{
-		id: "strings",
-		name: "Strings",
-		description: "Guitars, Violins, Cellos & more",
-		icon: <FaGuitar size={36} />,
-		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(235, 94, 40, 0.1)",
-	},
-	{
-		id: "winds",
-		name: "Winds",
-		description: "Saxophones, Flutes, Clarinets & more",
-		icon: <GiSaxophone size={36} />,
-		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(52, 152, 219, 0.1)",
-	},
-	{
-		id: "percussion",
-		name: "Percussion",
-		description: "Drums, Cymbals, Percussion & more",
-		icon: <FaDrum size={36} />,
-		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(155, 89, 182, 0.1)",
-	},
-	{
-		id: "accessories",
-		name: "Accessories",
-		description: "Headphones, Cables, Stands & more",
-		icon: <FaHeadphones size={36} />,
-		image: "/placeholder.svg?height=400&width=600",
-		color: "rgba(46, 204, 113, 0.1)",
-	},
-];
-
 const HomePage = () => {
+	const [featuredProducts, setfProducts] = useState([]);
+	const [categories, setCategories] = useState([]);
+
+	useEffect(() => {
+		fetchProducts()
+			.then((data) => {
+				setfProducts(data.filter((products) => products.featured === true));
+			})
+			.catch((error) => {
+				console.error("Error en el fetching de los productos: ", error);
+			});
+	}, []);
+
+	useEffect(() => {
+		fetchCategories()
+			.then((data) => {
+				setCategories(data);
+			})
+			.catch((error) => {
+				console.error("Hubo un error al cargar los datos: ", error);
+			});
+	}, []);
+
 	return (
 		<div>
-			{/* Hero */}
+			{/* Heroooo */}
 			<section className="py-5 bg-light">
 				<div className="container">
 					<div className="row align-items-center">
