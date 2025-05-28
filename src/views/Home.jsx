@@ -1,11 +1,10 @@
-import { FaArrowRight, FaGuitar, FaDrum, FaHeadphones } from "react-icons/fa";
-import { GiSaxophone } from "react-icons/gi";
+import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 import { fetchProducts, fetchCategories } from "../mock/AsyncService.jsx";
 
-import FeaturedProductCard from "../components/FeaturedProductCard.jsx";
+import Item from "../components/Item.jsx";
 import CategoryCard from "../components/CategoryCard.jsx";
 import CallToAction from "../components/CallToAction.jsx";
 
@@ -77,7 +76,7 @@ const HomePage = () => {
 					<div className="row g-4">
 						{featuredProducts.map((product) => (
 							<div key={product.id} className="col-sm-6 col-lg-3">
-								<FeaturedProductCard product={product} />
+								<Item product={product} />
 							</div>
 						))}
 					</div>

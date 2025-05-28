@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { fetchProducts } from "../mock/AsyncService";
 
-import Item from "../components/Item";
+import ItemListContainer from "../components/ItemListContainer";
 import ShopHeader from "../components/ShopHeader";
 
 const Shop = () => {
@@ -47,13 +47,7 @@ const Shop = () => {
 
 						{/* Grilla de productos */}
 						<div className="d-none d-md-block mb-4" style={{ background: "#fdfdfd" }}>
-							<div className="row g-4 product-grid" id="productGrid">
-								{products.map((product) => (
-									<div key={product.id} className="col-sm-6 col-lg-4 product-item">
-										<Item product={product} />
-									</div>
-								))}
-							</div>
+							<ItemListContainer />
 						</div>
 					</div>
 				</div>
