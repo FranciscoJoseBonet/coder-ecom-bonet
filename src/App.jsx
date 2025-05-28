@@ -12,6 +12,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import "./App.css";
+import ItemListContainer from "./components/ItemListContainer.jsx";
 
 function App() {
 	return (
@@ -22,7 +23,7 @@ function App() {
 				<Route path="/cart" element={<CartPage />} />
 				<Route path="/shop" element={<Shop />} />
 				<Route path="*" element={<NotFound />} />
-				<Route parth="/category/:categoryId" />
+				<Route path="/category/:categoryId" element={<ItemListContainer />} />
 			</Routes>
 			<Footer />
 		</BrowserRouter>

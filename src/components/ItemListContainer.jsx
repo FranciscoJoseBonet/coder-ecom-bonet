@@ -6,16 +6,24 @@ import { fetchProducts } from "../mock/AsyncService";
 const ItemListContainer = () => {
 	const [products, setProducts] = useState([]);
 	const { categoryId } = useParams();
+	console.log(categoryId);
 
 	useEffect(() => {
-		fetchProducts().then((res) => {
-			if (categoryId) {
-				const filtered = res.filter((product) => product.category === categoryId);
-				setProducts(filtered);
-			} else {
-				setProducts(res);
-			}
-		});
+		fetchProducts()
+			.then((res) => {
+				if (categoryId) {
+					const filtered = res.filter(
+						(product) => product.category.toLowerCase() === categoryId
+					);
+					console.log(filtered);
+					setProducts(filtered);
+				} else {
+					setProducts(res);
+				}
+			})
+			.catch((error) => {
+				console.error("Se produjo un error al cargar los productos: ", error);
+			});
 	}, [categoryId]);
 
 	return (
