@@ -10,7 +10,7 @@ const FeaturedProductCard = ({ product }) => {
 				style={{ height: "200px" }}
 			>
 				<img
-					src={product.image || "/placeholder.svg"}
+					src={product.image}
 					className="img-fluid"
 					alt={product.name}
 					style={{ maxHeight: "100%", width: "auto", height: "auto" }}

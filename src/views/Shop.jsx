@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { fetchProducts } from "../mock/AsyncService";
 
-import ShopProductCard from "../components/ShopProductCard";
+import Item from "../components/Item";
 import ShopHeader from "../components/ShopHeader";
 
 const Shop = () => {
@@ -23,10 +23,10 @@ const Shop = () => {
 			<ShopHeader />
 			<div className="container">
 				<div className="row">
-					{/* Main Content */}
-					<div className="col-lg-9">
-						{/* Results Info */}
+					{/* Shop arranca aca */}
+					<div className="col-lg-12">
 						<div className="d-flex justify-content-between align-items-center mb-4">
+							{/* aca va el conteo por categorias (tengo que poner un atributo de cantidad de cada categoria para que aparezca con el filtro) */}
 							<div className="results-info">
 								<span className="text-muted">
 									Showing <span id="resultsStart">1</span>-<span id="resultsEnd">12</span>{" "}
@@ -45,13 +45,15 @@ const Shop = () => {
 							</div>
 						</div>
 
-						{/* Product Grid */}
-						<div className="row g-4 product-grid" id="productGrid">
-							{products.map((product) => (
-								<div key={product.id} className="col-sm-6 col-lg-4 product-item">
-									<ShopProductCard product={product} />
-								</div>
-							))}
+						{/* Grilla de productos */}
+						<div className="d-none d-md-block mb-4" style={{ background: "#fdfdfd" }}>
+							<div className="row g-4 product-grid" id="productGrid">
+								{products.map((product) => (
+									<div key={product.id} className="col-sm-6 col-lg-4 product-item">
+										<Item product={product} />
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 				</div>

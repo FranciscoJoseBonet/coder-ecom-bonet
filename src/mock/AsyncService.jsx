@@ -103,7 +103,7 @@ const products = [
 		originalPrice: 22999.99,
 		rating: 4.2,
 		reviews: 22,
-		image: "https://i.postimg.cc/gx6ZCSgz/shure-sm58.webp",
+		image: "https://i.postimg.cc/q7gXcQXZ/synth-KORG.webp",
 		category: "Keyboards",
 		quantity: 1,
 		stock: 11,
