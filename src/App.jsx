@@ -32,10 +32,13 @@ function App() {
 				<Route path="/category/:categoryId" element={<ItemListContainer head={true} />} />
 
 				{/* Rutas para ver los detalles del item */}
-				<Route path="/:itemId" element={<ItemDetailContainer />} />
-				<Route path="/shop/:itemId" element={<ItemDetailContainer />} />
-				<Route path="/cart/:itemId" element={<ItemDetailContainer />} />
-				<Route path="/category/:categoryId/:itemId" element={<ItemDetailContainer />} />
+				<Route path="/item/:itemId" element={<ItemDetailContainer />} />
+				<Route path="/shop/item/:itemId" element={<ItemDetailContainer />} />
+				<Route path="/cart/item/:itemId" element={<ItemDetailContainer />} />
+				<Route
+					path="/category/:categoryId/item/:itemId"
+					element={<ItemDetailContainer />}
+				/>
 			</Routes>
 			<Footer />
 		</BrowserRouter>

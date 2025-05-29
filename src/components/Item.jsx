@@ -23,7 +23,7 @@ const Card = styled.div`
 
 const ShopProductCard = ({ product }) => {
 	return (
-		<Link to={product.id} style={{ textDecoration: "none" }}>
+		<Link to={"item/" + product.id} style={{ textDecoration: "none" }}>
 			<Card>
 				<div className="card h-100 border-0 shadow-sm product-card">
 					<div className="position-relative">
