@@ -1,27 +1,12 @@
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-import { fetchCategories } from "../mock/AsyncService.jsx";
 
 import ItemListContainer from "../components/ItemListContainer.jsx";
-import CategoryCard from "../components/CategoryCard.jsx";
+import CategoriesListContainer from "../components/CategoriesListContainer.jsx";
 import CallToAction from "../components/CallToAction.jsx";
 import HeroSection from "../components/HeroSection.jsx";
 
 const HomePage = () => {
-	const [categories, setCategories] = useState([]);
-
-	useEffect(() => {
-		fetchCategories()
-			.then((data) => {
-				setCategories(data);
-			})
-			.catch((error) => {
-				console.error("Hubo un error al cargar los datos: ", error);
-			});
-	}, []);
-
 	return (
 		<div>
 			{/* Heroooo */}
@@ -52,18 +37,7 @@ const HomePage = () => {
 			</section>
 
 			{/* Categorias */}
-			<section className="py-5 bg-light">
-				<div className="container">
-					<h2 className="mb-4">Shop by Category</h2>
-					<div className="row g-4">
-						{categories.map((category) => (
-							<div key={category.id} className="col-md-6">
-								<CategoryCard category={category} />
-							</div>
-						))}
-					</div>
-				</div>
-			</section>
+			<CategoriesListContainer />
 
 			{/* CTA */}
 			<section className="py-5">

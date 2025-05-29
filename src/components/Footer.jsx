@@ -76,6 +76,7 @@ const Footer = () => {
 						<form className="mb-3">
 							<div className="input-group">
 								<input
+									id="footer-sub-input"
 									type="email"
 									className="form-control"
 									placeholder="Your email address"

@@ -3,6 +3,7 @@ import { FaSearch } from "react-icons/fa";
 const SearchForm = () => (
 	<form className="d-flex me-2 my-2 my-lg-0 position-relative">
 		<input
+			id="nav-search-input"
 			className="form-control me-2"
 			type="search"
 			placeholder="Search instruments..."
