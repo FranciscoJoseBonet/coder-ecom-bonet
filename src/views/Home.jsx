@@ -2,25 +2,15 @@ import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { fetchProducts, fetchCategories } from "../mock/AsyncService.jsx";
+import { fetchCategories } from "../mock/AsyncService.jsx";
 
-import Item from "../components/Item.jsx";
+import ItemListContainer from "../components/ItemListContainer.jsx";
 import CategoryCard from "../components/CategoryCard.jsx";
 import CallToAction from "../components/CallToAction.jsx";
+import HeroSection from "../components/HeroSection.jsx";
 
 const HomePage = () => {
-	const [featuredProducts, setfProducts] = useState([]);
 	const [categories, setCategories] = useState([]);
-
-	useEffect(() => {
-		fetchProducts()
-			.then((data) => {
-				setfProducts(data.filter((products) => products.featured === true));
-			})
-			.catch((error) => {
-				console.error("Error en el fetching de los productos: ", error);
-			});
-	}, []);
 
 	useEffect(() => {
 		fetchCategories()
@@ -37,30 +27,12 @@ const HomePage = () => {
 			{/* Heroooo */}
 			<section className="py-5 bg-light">
 				<div className="container">
-					<div className="row align-items-center">
-						<div className="col-lg-6 mb-5 mb-lg-0">
-							<h1 className="display-4 fw-bold mb-3">Find Your Perfect Sound</h1>
-							<p className="lead text-muted mb-4">
-								High-quality instruments for passionate musicians, from beginners to
-								professionals.
-							</p>
-							<div className="d-flex gap-3 d-flex justify-content-center">
-								<Link to="/shop" className="btn btn-dark btn-lg px-4 py-2 w-100">
-									Shop Now
-								</Link>
-								<Link to="/about" className="btn btn-outline-dark btn-lg px-4 py-2 w-100">
-									Learn More
-								</Link>
-							</div>
-						</div>
-						<div className="col-lg-6">
-							<img
-								src="https://i.postimg.cc/SxJGrGXb/s.jpg"
-								alt="Premium musical instruments"
-								className="img-fluid rounded shadow"
-							/>
-						</div>
-					</div>
+					<HeroSection
+						title="Find Your Perfect Sound"
+						subtitle="High-quality instruments for passionate musicians, from beginners to
+					professionals"
+						imgPath="https://i.postimg.cc/SxJGrGXb/s.jpg"
+					/>
 				</div>
 			</section>
 
@@ -74,11 +46,7 @@ const HomePage = () => {
 						</Link>
 					</div>
 					<div className="row g-4">
-						{featuredProducts.map((product) => (
-							<div key={product.id} className="col-sm-6 col-lg-3">
-								<Item product={product} />
-							</div>
-						))}
+						<ItemListContainer filterBy="featured" />
 					</div>
 				</div>
 			</section>
@@ -97,7 +65,7 @@ const HomePage = () => {
 				</div>
 			</section>
 
-			{/* Contenido adicional */}
+			{/* CTA */}
 			<section className="py-5">
 				<div className="container">
 					<div className="row g-">

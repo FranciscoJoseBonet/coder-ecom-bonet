@@ -10,7 +10,7 @@ import FooterLinkColumn from "./FooterLinkColumn";
 const Footer = () => {
 	const [categories, setCategories] = useState([]);
 	const [suppLinks, setSuppLinks] = useState([]);
-	const [webObjects, setWebOjects] = useState([]);
+	const [webObjects, setWebObjects] = useState([]);
 
 	useEffect(() => {
 		fetchCategories()
@@ -32,21 +32,11 @@ const Footer = () => {
 			});
 	}, []);
 
-	useEffect(() => {
-		fetchWebsLinks()
-			.then((data) => {
-				setWebOjects(data);
-			})
-			.catch((error) => {
-				console.error("Se produjo un error al cargar los datos: ", error);
-			});
-	}, []);
-
 	const legals = ["Privacy Policy", "Terms of Service", "Sitemap"];
 
 	return (
-		<footer className="bg-light pt-5 pb-3">
-			<div className="container">
+		<footer className="bg-light pt-5 pb-3 d-flex flex-column bottom-0">
+			<div className="container flex-grow-1">
 				<div className="row g-4 ">
 					{/* Primera columna */}
 					<div className="col-lg-4 col-md-6">

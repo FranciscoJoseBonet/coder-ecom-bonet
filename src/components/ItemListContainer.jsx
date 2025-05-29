@@ -4,7 +4,7 @@ import ItemList from "./ItemList";
 import { fetchProducts } from "../mock/AsyncService";
 import Greeting from "./Greeting";
 
-const ItemListContainer = ({ text, head = false }) => {
+const ItemListContainer = ({ text, head = false, filterBy = "" }) => {
 	const [products, setProducts] = useState([]);
 	const { categoryId } = useParams();
 
@@ -16,6 +16,9 @@ const ItemListContainer = ({ text, head = false }) => {
 						(product) => product.category.toLowerCase() === categoryId
 					);
 					setProducts(filtered);
+				} else if (filterBy) {
+					const filtered = res.filter((product) => product[filterBy] === true);
+					setProducts(filtered);
 				} else {
 					setProducts(res);
 				}
@@ -23,7 +26,7 @@ const ItemListContainer = ({ text, head = false }) => {
 			.catch((error) => {
 				console.error("Se produjo un error al cargar los productos: ", error);
 			});
-	}, [categoryId]);
+	}, [categoryId, filterBy]);
 
 	return (
 		<>
