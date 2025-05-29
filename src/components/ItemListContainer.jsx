@@ -4,7 +4,7 @@ import ItemList from "./ItemList";
 import { fetchProducts } from "../mock/AsyncService";
 import Greeting from "./Greeting";
 
-const ItemListContainer = ({ text }) => {
+const ItemListContainer = ({ text, head = false }) => {
 	const [products, setProducts] = useState([]);
 	const { categoryId } = useParams();
 
@@ -27,14 +27,16 @@ const ItemListContainer = ({ text }) => {
 
 	return (
 		<>
-			<Greeting
-				text={text}
-				category={
-					categoryId
-						? categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
-						: "All the products"
-				}
-			/>
+			{head ? (
+				<Greeting
+					text={text}
+					category={
+						categoryId
+							? categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
+							: "All the products"
+					}
+				/>
+			) : null}
 			<div className="container my-4">
 				<ItemList products={products} />
 			</div>

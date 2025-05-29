@@ -12,12 +12,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ScrollToTop from "./utils/ScrollToTop.jsx";
 
 import "./App.css";
 
 function App() {
 	return (
 		<BrowserRouter>
+			<ScrollToTop />
 			<Navbar />
 			<Routes>
 				{/* Rutas a las vistas principales */}
@@ -27,11 +29,12 @@ function App() {
 				<Route path="*" element={<NotFound />} />
 
 				{/* Rutas para filtrar por categoria */}
-				<Route path="/category/:categoryId" element={<ItemListContainer />} />
+				<Route path="/category/:categoryId" element={<ItemListContainer head={true} />} />
 
 				{/* Rutas para ver los detalles del item */}
 				<Route path="/:itemId" element={<ItemDetailContainer />} />
-				<Route path="/:view/:itemId" element={<ItemDetailContainer />} />
+				<Route path="/shop/:itemId" element={<ItemDetailContainer />} />
+				<Route path="/cart/:itemId" element={<ItemDetailContainer />} />
 				<Route path="/category/:categoryId/:itemId" element={<ItemDetailContainer />} />
 			</Routes>
 			<Footer />
