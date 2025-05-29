@@ -20,12 +20,19 @@ function App() {
 		<BrowserRouter>
 			<Navbar />
 			<Routes>
+				{/* Rutas a las vistas principales */}
 				<Route path="/" element={<HomePage />} />
 				<Route path="/cart" element={<CartPage />} />
 				<Route path="/shop" element={<Shop />} />
 				<Route path="*" element={<NotFound />} />
+
+				{/* Rutas para filtrar por categoria */}
 				<Route path="/category/:categoryId" element={<ItemListContainer />} />
+
+				{/* Rutas para ver los detalles del item */}
 				<Route path="/:itemId" element={<ItemDetailContainer />} />
+				<Route path="/:view/:itemId" element={<ItemDetailContainer />} />
+				<Route path="/category/:categoryId/:itemId" element={<ItemDetailContainer />} />
 			</Routes>
 			<Footer />
 		</BrowserRouter>

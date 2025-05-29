@@ -2,8 +2,9 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ItemList from "./ItemList";
 import { fetchProducts } from "../mock/AsyncService";
+import Greeting from "./Greeting";
 
-const ItemListContainer = () => {
+const ItemListContainer = ({ text }) => {
 	const [products, setProducts] = useState([]);
 	const { categoryId } = useParams();
 
@@ -25,12 +26,19 @@ const ItemListContainer = () => {
 	}, [categoryId]);
 
 	return (
-		<div className="container my-4">
-			<h2 className="mb-4 text-center">
-				{categoryId ? `Category: ${categoryId}` : "All the products"}
-			</h2>
-			<ItemList products={products} />
-		</div>
+		<>
+			<Greeting
+				text={text}
+				category={
+					categoryId
+						? categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
+						: "All the products"
+				}
+			/>
+			<div className="container my-4">
+				<ItemList products={products} />
+			</div>
+		</>
 	);
 };
 

@@ -19,7 +19,6 @@ const ItemDetail = ({ product }) => {
 
 	return (
 		<Row className="g-4">
-			{/* Foto */}
 			<Col lg={6}>
 				<Card className="border-0 shadow-sm" style={{ maxHeight: "80vh" }}>
 					<Card.Img
