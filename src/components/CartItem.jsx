@@ -1,5 +1,6 @@
 import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
 import { fCurrency } from "../utils/FormatCurrency";
+import { Link } from "react-router-dom";
 
 const CartItem = ({ item, onQuantityChange }) => {
 	const handleIncrease = () => {
@@ -17,17 +18,21 @@ const CartItem = ({ item, onQuantityChange }) => {
 		>
 			<div className="d-flex flex-column flex-lg-row flex-md-row align-items-center p-2 g-0">
 				<div className="col-md-2 col-4 align-items center d-flex justify-content-center">
-					<img
-						src={item.image}
-						alt={item.name}
-						className="img-fluid rounded"
-						style={{ height: "9rem", width: "auto" }}
-					/>
+					<Link to={item.id} style={{ textDecoration: "none" }}>
+						<img
+							src={item.image}
+							alt={item.name}
+							className="img-fluid rounded"
+							style={{ height: "9rem", width: "auto" }}
+						/>
+					</Link>
 				</div>
 				<div className="col-md-4 col-10">
 					<div className="card-body py-2 text-lg-start text-md-start text-center">
-						<h5 className="card-title mb-0">{item.name}</h5>
-						<p className="card-text text-muted small">ID: {item.id}</p>
+						<Link to={item.id} style={{ textDecoration: "none", color: "inherit" }}>
+							<h5 className="card-title mb-0">{item.name}</h5>
+							<p className="card-text text-muted small">ID: {item.id}</p>
+						</Link>
 					</div>
 				</div>
 				<div className="col-md-2 col-6">

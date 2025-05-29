@@ -6,7 +6,6 @@ import { fetchProducts } from "../mock/AsyncService";
 const ItemListContainer = () => {
 	const [products, setProducts] = useState([]);
 	const { categoryId } = useParams();
-	console.log(categoryId);
 
 	useEffect(() => {
 		fetchProducts()
@@ -15,7 +14,6 @@ const ItemListContainer = () => {
 					const filtered = res.filter(
 						(product) => product.category.toLowerCase() === categoryId
 					);
-					console.log(filtered);
 					setProducts(filtered);
 				} else {
 					setProducts(res);
