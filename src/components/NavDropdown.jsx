@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchCategories } from "../mock/AsyncService";
 
@@ -17,7 +17,7 @@ const NavDropdown = () => {
 
 	return (
 		<li className="nav-item dropdown">
-			<Link
+			<NavLink
 				className="nav-link dropdown-toggle"
 				id="navbarDropdown"
 				role="button"
@@ -25,15 +25,15 @@ const NavDropdown = () => {
 				aria-expanded="false"
 			>
 				Categories
-			</Link>
+			</NavLink>
 			<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
 				{categories.map((categ) => {
 					const label = categ.name;
 					return (
 						<li key={categ.id + "nav"}>
-							<Link to={`/category/${categ.id}`} className="dropdown-item">
+							<NavLink to={`/category/${categ.id}`} className="dropdown-item">
 								{label}
-							</Link>
+							</NavLink>
 						</li>
 					);
 				})}
@@ -41,9 +41,9 @@ const NavDropdown = () => {
 					<hr className="dropdown-divider" />
 				</li>
 				<li>
-					<Link className="dropdown-item" to="/shop">
+					<NavLink className="dropdown-item" to="/shop">
 						All Categories
-					</Link>
+					</NavLink>
 				</li>
 			</ul>
 		</li>

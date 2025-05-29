@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavItem = ({ href, label }) => (
 	<li className="nav-item">
-		<Link className="nav-link" to={href}>
+		<NavLink className="nav-link" to={href}>
 			{label}
-		</Link>
+		</NavLink>
 	</li>
 );
 
