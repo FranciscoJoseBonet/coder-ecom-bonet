@@ -1,33 +1,32 @@
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ItemList from "./ItemList";
+
 import { fetchProducts } from "../mock/AsyncService";
+import { useFilteredFetch } from "../utils/useFilteredFetch";
+
+import SpinnerLoading from "./SpinnerLoading";
+import ItemList from "./ItemList";
 import Greeting from "./Greeting";
 
-const ItemListContainer = ({ text, head = false, filterBy = "" }) => {
-	const [products, setProducts] = useState([]);
+const ItemListContainer = ({ text, head = false, filterBy }) => {
 	const { categoryId } = useParams();
 
-	useEffect(() => {
-		fetchProducts()
-			.then((res) => {
-				if (categoryId) {
-					const filtered = res.filter(
-						(product) => product.category.toLowerCase() === categoryId
-					);
-					setProducts(filtered);
-				} else if (filterBy) {
-					const filtered = res.filter((product) => product[filterBy] === true);
-					setProducts(filtered);
-				} else {
-					setProducts(res);
-				}
-			})
-			.catch((error) => {
-				console.error("Se produjo un error al cargar los productos: ", error);
-			});
-	}, [categoryId, filterBy]);
+	const filters = [];
 
+	if (categoryId) {
+		filters.push({ key: "category", value: categoryId, compare: "equalsIgnoreCase" });
+	} else if (filterBy) {
+		filters.push({ key: filterBy, value: true });
+	}
+
+	const { data: products, loading, error } = useFilteredFetch(fetchProducts, filters);
+
+	if (loading) {
+		return <SpinnerLoading />;
+	}
+
+	if (error) {
+		return <FetchError />;
+	}
 	return (
 		<>
 			{head ? (

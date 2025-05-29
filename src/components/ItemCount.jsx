@@ -4,7 +4,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 
 const ItemCount = ({ stock, onAdd }) => {
 	const [count, setCount] = useState(1);
-	// stock = 0;
+
 	const handleIncrement = () => {
 		if (count < stock) {
 			setCount(count + 1);
@@ -94,31 +94,3 @@ const ItemCount = ({ stock, onAdd }) => {
 };
 
 export default ItemCount;
-
-{
-	/* <div className="col-md-2 col-6">
-	<div className="input-group input-group-sm">
-		<button
-			className="btn btn-outline-secondary pb-2"
-			type="button"
-			onClick={handleDecrease}
-		>
-			<FaMinus size={14} />
-		</button>
-		<input
-			type="text"
-			className="form-control text-center border border-secondary"
-			value={item.quantity}
-			readOnly
-			aria-label="Quantity"
-		/>
-		<button
-			className="btn btn-outline-secondary pb-2"
-			type="button"
-			onClick={handleIncrease}
-		>
-			<FaPlus size={14} />
-		</button>
-	</div>
-</div>; */
-}

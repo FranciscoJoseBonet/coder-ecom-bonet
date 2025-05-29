@@ -1,4 +1,4 @@
-import { FaTrash, FaMinus, FaPlus } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { fCurrency } from "../utils/FormatCurrency";
 import { Link } from "react-router-dom";
 
