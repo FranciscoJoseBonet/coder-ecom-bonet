@@ -24,7 +24,7 @@ const ItemDetailContainer = () => {
 	}
 
 	if (error || !product) {
-		return <FetchError />;
+		return <FetchError error={error} />;
 	}
 
 	return (

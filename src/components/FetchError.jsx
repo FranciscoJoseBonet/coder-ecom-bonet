@@ -1,6 +1,6 @@
-import { Row, Col, Alert } from "react-bootstrap";
+import { Row, Col, Alert, Container } from "react-bootstrap";
 
-const FetchError = () => {
+const FetchError = ({ error }) => {
 	return (
 		<Container className="py-5">
 			<Row className="justify-content-center">

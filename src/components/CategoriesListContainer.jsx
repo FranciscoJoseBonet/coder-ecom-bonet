@@ -13,7 +13,7 @@ const CategoriesListContainer = () => {
 	}
 
 	if (error || !category) {
-		return <FetchError />;
+		return <FetchError error={error} />;
 	}
 
 	return (

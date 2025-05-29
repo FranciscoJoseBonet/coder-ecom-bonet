@@ -25,7 +25,7 @@ const ItemListContainer = ({ text, head = false, filterBy }) => {
 	}
 
 	if (error) {
-		return <FetchError />;
+		return <FetchError error={error} />;
 	}
 	return (
 		<>
