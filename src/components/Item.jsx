@@ -1,6 +1,8 @@
 import { fCurrency } from "../utils/FormatCurrency";
+import StarsRender from "./StarsRender";
 
 import styled from "styled-components";
+
 import { Link } from "react-router-dom";
 
 // Uso esta libreria para que quede mas lindo :)
@@ -46,10 +48,7 @@ const ShopProductCard = ({ product }) => {
 						<h5 className="card-title">{product.name}</h5>
 						<div className="mb-2">
 							<div className="d-flex align-items-center">
-								<div className="text-warning me-1">
-									{"★".repeat(Math.trunc(product.rating))}
-									{"☆".repeat(5 - Math.trunc(product.rating))}
-								</div>
+								<div className="text-warning me-1">{StarsRender(product.rating)}</div>
 								<small className="text-muted">({product.reviews})</small>
 							</div>
 						</div>

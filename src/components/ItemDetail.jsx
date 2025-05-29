@@ -1,40 +1,18 @@
 import { Row, Col, Card, Badge } from "react-bootstrap";
-import {
-	FaStar,
-	FaStarHalfAlt,
-	FaRegStar,
-	FaShieldAlt,
-	FaTruck,
-	FaUndo,
-} from "react-icons/fa";
-import ItemCount from "./ItemCount";
+import { FaShieldAlt, FaTruck, FaUndo } from "react-icons/fa";
+import { useState } from "react";
+
 import { fCurrency } from "../utils/FormatCurrency";
 
+import ItemCount from "./ItemCount";
+import StarsRender from "./StarsRender";
+
 const ItemDetail = ({ product }) => {
+	const [quant, setQuant] = useState(0);
 	const { name, description, price, image, stock, category, rating, reviews } = product;
 
-	const renderStars = (rating) => {
-		const stars = [];
-		const fullStars = Math.floor(rating);
-		const hasHalfStar = rating % 1 !== 0;
-
-		for (let i = 0; i < fullStars; i++) {
-			stars.push(<FaStar key={i} className="text-warning" />);
-		}
-
-		if (hasHalfStar) {
-			stars.push(<FaStarHalfAlt key="half" className="text-warning" />);
-		}
-
-		const emptyStars = 5 - Math.ceil(rating);
-		for (let i = 0; i < emptyStars; i++) {
-			stars.push(<FaRegStar key={`empty-${i}`} className="text-warning" />);
-		}
-
-		return stars;
-	};
-
-	const handleAddToCart = (quantity) => {
+	const handleOnAdd = (quantity) => {
+		setQuant(quantity);
 		console.log(`Adding ${quantity} of ${name} to cart`);
 		//funcion para agregar al carrito dsps
 	};
@@ -73,7 +51,7 @@ const ItemDetail = ({ product }) => {
 							</div>
 							{/* el score */}
 							<div className="d-flex align-items-center mb-3">
-								<div className="me-2">{renderStars(rating)}</div>
+								<div className="me-2">{StarsRender(rating)}</div>
 								<span className="text-muted">
 									{rating} ({reviews} reviews)
 								</span>
@@ -89,12 +67,12 @@ const ItemDetail = ({ product }) => {
 
 							{/* ItemCount */}
 							<div className="mt-auto">
-								{stock > 0 && <ItemCount stock={stock} onAdd={handleAddToCart} />}
+								{stock > 0 && <ItemCount stock={stock} onAdd={handleOnAdd} />}
 							</div>
 						</Card.Body>
 					</Card>
 
-					{/* Paradarle realismo */}
+					{/* Paradarle realismo XD*/}
 					<Row className="text-center">
 						<Col xs={4}>
 							<div className="p-3">
