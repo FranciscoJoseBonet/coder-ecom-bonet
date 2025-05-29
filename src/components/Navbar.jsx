@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 import Logo from "./Logo.jsx";
 import SearchForm from "./SearchForm";
@@ -9,10 +10,17 @@ import NavDropdown from "./NavDropdown";
 
 const Navbar = () => {
 	const [isOpen, setIsOpen] = useState(false);
+	const location = useLocation();
 
 	const toggleMenu = () => {
 		setIsOpen(!isOpen);
 	};
+
+	useEffect(() => {
+		if (isOpen) {
+			setIsOpen(false);
+		}
+	}, [location]);
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
