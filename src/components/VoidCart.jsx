@@ -11,7 +11,7 @@ const VoidCart = () => {
 			<p className="text-muted mb-4">
 				Looks like you haven't added any items to your cart yet.
 			</p>
-			<Link to="shop" className="btn btn-dark px-4 py-2">
+			<Link to="/shop" className="btn btn-dark px-4 py-2">
 				Continue Shopping
 			</Link>
 		</div>

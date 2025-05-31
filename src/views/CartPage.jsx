@@ -2,40 +2,23 @@ import VoidCart from "../components/VoidCart.jsx";
 import CartItem from "../components/CartItem.jsx";
 import TotalSummary from "../components/TotalSummary.jsx";
 
-import { useEffect, useState } from "react";
-import { fetchProducts } from "../mock/AsyncService.jsx";
+import { useContext } from "react";
+
+import { CartContext } from "../context/CartContext.jsx";
 
 const CartPage = () => {
-	const [cartItems, setCartItems] = useState([]);
+	const { cart, addItem, clear, isCartVoid } = useContext(CartContext);
 
-	useEffect(() => {
-		fetchProducts()
-			.then((data) => {
-				const sample = data.slice(0, 3);
-				setCartItems(sample);
-			})
-			.catch((error) => {
-				console.error("No se pudo resolver el pedido de los productos: ", error);
-			});
-	}, [cartItems]);
-
-	const updateItemQuantity = (id, newQuantity) => {
-		setCartItems((prevItems) =>
-			prevItems.map((item) =>
-				item.id === id ? { ...item, quantity: newQuantity } : item
-			)
-		);
-	};
-
-	const hasItems = cartItems.length > 0;
-	const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+	const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 	const taxPercentage = 0.21;
-	const shipping = hasItems ? 6000 : 0;
+	const shipping = !isCartVoid ? 6000 : 0;
 
 	return (
 		<div className="container py-5">
 			<div className="row">
-				{hasItems ? (
+				{isCartVoid() ? (
+					<VoidCart />
+				) : (
 					<>
 						<div className="col-lg-8 mb-4 mb-lg-0">
 							<h1 className="mb-4 text-lg-start text-md-start text-center">
@@ -48,12 +31,8 @@ const CartPage = () => {
 								<div className="col-md-1 text-end">Remove</div>
 							</div>
 
-							{cartItems.map((item) => (
-								<CartItem
-									key={item.id}
-									item={item}
-									onQuantityChange={updateItemQuantity}
-								/>
+							{cart.map((item) => (
+								<CartItem key={item.id} item={item} />
 							))}
 						</div>
 						<div className="col-lg-4">
@@ -64,8 +43,6 @@ const CartPage = () => {
 							/>
 						</div>
 					</>
-				) : (
-					<VoidCart />
 				)}
 			</div>
 		</div>

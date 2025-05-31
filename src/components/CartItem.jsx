@@ -21,7 +21,10 @@ const CartItem = ({ item }) => {
 				</div>
 				<div className="col-md-4 col-10">
 					<div className="card-body py-2 text-lg-start text-md-start text-center">
-						<Link to={item.id} style={{ textDecoration: "none", color: "inherit" }}>
+						<Link
+							to={"item/" + item.id}
+							style={{ textDecoration: "none", color: "inherit" }}
+						>
 							<h5 className="card-title mb-0">{item.name}</h5>
 							<p className="card-text text-muted small">ID: {item.id}</p>
 						</Link>

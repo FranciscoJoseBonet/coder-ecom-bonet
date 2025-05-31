@@ -10,8 +10,7 @@ import StarsRender from "./StarsRender";
 import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({ product }) => {
-	const { cart } = useContext(CartContext);
-	console.log(cart);
+	const { addItem } = useContext(CartContext);
 
 	const [quant, setQuant] = useState(0);
 	const { name, description, price, image, stock, category, rating, reviews } = product;
@@ -19,7 +18,7 @@ const ItemDetail = ({ product }) => {
 	const handleOnAdd = (quantity) => {
 		setQuant(quantity);
 		console.log(`Adding ${quantity} of ${name} to cart`);
-		//funcion para agregar al carrito dsps
+		addItem(product, quantity);
 	};
 
 	return (
