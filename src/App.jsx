@@ -8,6 +8,10 @@ import ItemListContainer from "./components/ItemListContainer.jsx";
 import ItemDetailContainer from "./components/ItemDetailContainer.jsx";
 import NotFound from "./views/NotFound.jsx";
 
+// Proveedores
+
+import { CartProvider } from "./context/CartContext.jsx";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
@@ -20,26 +24,31 @@ function App() {
 	return (
 		<BrowserRouter>
 			<ScrollToTop />
-			<Navbar />
-			<Routes>
-				{/* Rutas a las vistas principales */}
-				<Route path="/" element={<HomePage />} />
-				<Route path="/cart" element={<CartPage />} />
-				<Route path="/shop" element={<Shop />} />
-				<Route path="*" element={<NotFound />} />
+			<CartProvider>
+				<Navbar />
+				<Routes>
+					{/* Rutas a las vistas principales */}
+					<Route path="/" element={<HomePage />} />
+					<Route path="/cart" element={<CartPage />} />
+					<Route path="/shop" element={<Shop />} />
+					<Route path="*" element={<NotFound />} />
 
-				{/* Rutas para filtrar por categoria */}
-				<Route path="/category/:categoryId" element={<ItemListContainer head={true} />} />
+					{/* Rutas para filtrar por categoria */}
+					<Route
+						path="/category/:categoryId"
+						element={<ItemListContainer head={true} />}
+					/>
 
-				{/* Rutas para ver los detalles del item */}
-				<Route path="/item/:itemId" element={<ItemDetailContainer />} />
-				<Route path="/shop/item/:itemId" element={<ItemDetailContainer />} />
-				<Route path="/cart/item/:itemId" element={<ItemDetailContainer />} />
-				<Route
-					path="/category/:categoryId/item/:itemId"
-					element={<ItemDetailContainer />}
-				/>
-			</Routes>
+					{/* Rutas para ver los detalles del item */}
+					<Route path="/item/:itemId" element={<ItemDetailContainer />} />
+					<Route path="/shop/item/:itemId" element={<ItemDetailContainer />} />
+					<Route path="/cart/item/:itemId" element={<ItemDetailContainer />} />
+					<Route
+						path="/category/:categoryId/item/:itemId"
+						element={<ItemDetailContainer />}
+					/>
+				</Routes>
+			</CartProvider>
 			<Footer />
 		</BrowserRouter>
 	);

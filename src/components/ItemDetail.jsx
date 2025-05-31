@@ -1,13 +1,18 @@
 import { Row, Col, Card, Badge } from "react-bootstrap";
 import { FaShieldAlt, FaTruck, FaUndo } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { fCurrency } from "../utils/FormatCurrency";
 
 import ItemCount from "./ItemCount";
 import StarsRender from "./StarsRender";
 
+import { CartContext } from "../context/CartContext";
+
 const ItemDetail = ({ product }) => {
+	const { cart } = useContext(CartContext);
+	console.log(cart);
+
 	const [quant, setQuant] = useState(0);
 	const { name, description, price, image, stock, category, rating, reviews } = product;
 
