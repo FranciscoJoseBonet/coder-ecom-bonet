@@ -6,11 +6,14 @@ import { CartContext } from "../context/CartContext";
 import "../css/CartWidget.css";
 
 const CartWidget = () => {
-	const { cart } = useContext(CartContext);
+	const { cartLen } = useContext(CartContext);
+
+	console.log(cartLen());
 	return (
 		<div className="cart__widget position-relative">
 			<FaShoppingCart className="cart__icon" />
-			<span className="cart__count">5</span>
+
+			{cartLen ? <span className="cart__count">{Number(cartLen())}</span> : null}
 		</div>
 	);
 };

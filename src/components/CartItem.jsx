@@ -2,7 +2,16 @@ import { FaTrash } from "react-icons/fa";
 import { fCurrency } from "../utils/FormatCurrency";
 import { Link } from "react-router-dom";
 
+import { useContext } from "react";
+
+import { CartContext } from "../context/CartContext";
+
 const CartItem = ({ item }) => {
+	const { removeItem } = useContext(CartContext);
+
+	const handleRemove = (id) => {
+		removeItem(id);
+	};
 	return (
 		<div
 			className="card mb-4 border-0 bg-white rounded-3"
@@ -37,7 +46,10 @@ const CartItem = ({ item }) => {
 					<span className="fw-bold">{fCurrency(item.price)}</span>
 				</div>
 				<div className="col-md-1 col-6 text-lg-end text-md-end text-center mt-3 mt-md-0 mt-lg-0 mb-3 mb-md-0 mb-lg-0">
-					<button className="btn btn-sm btn-outline-danger p-2 w-100">
+					<button
+						className="btn btn-sm btn-outline-danger p-2 w-100"
+						onClick={() => handleRemove(item.id)}
+					>
 						<FaTrash size={14} />
 					</button>
 				</div>

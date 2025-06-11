@@ -1,6 +1,6 @@
 import { Row, Col, Card, Badge } from "react-bootstrap";
 import { FaShieldAlt, FaTruck, FaUndo } from "react-icons/fa";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 import { fCurrency } from "../utils/FormatCurrency";
 
@@ -12,12 +12,9 @@ import { CartContext } from "../context/CartContext";
 const ItemDetail = ({ product }) => {
 	const { addItem } = useContext(CartContext);
 
-	const [quant, setQuant] = useState(0);
 	const { name, description, price, image, stock, category, rating, reviews } = product;
 
 	const handleOnAdd = (quantity) => {
-		setQuant(quantity);
-		console.log(`Adding ${quantity} of ${name} to cart`);
 		addItem(product, quantity);
 	};
 

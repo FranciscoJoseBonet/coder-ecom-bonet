@@ -45,7 +45,7 @@ const products = [
 		reviews: 56,
 		image: "https://http2.mlstatic.com/D_NQ_NP_734948-MLA70441977503_072023-O.webp",
 		category: "Strings",
-		quantity: 3,
+		quantity: 1,
 		stock: 12,
 		featured: false,
 		description:

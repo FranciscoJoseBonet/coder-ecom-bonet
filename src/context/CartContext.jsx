@@ -36,6 +36,18 @@ export const CartProvider = ({ children }) => {
 		return Number(cart.length) === 0;
 	};
 
-	const contextValue = { cart, addItem, clear, removeItem, isInCart, isCartVoid };
+	const cartLen = () => {
+		return cart.reduce((acc, item) => acc + item.quantity, 0);
+	};
+
+	const contextValue = {
+		cart,
+		addItem,
+		clear,
+		removeItem,
+		isInCart,
+		isCartVoid,
+		cartLen,
+	};
 	return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
 };
