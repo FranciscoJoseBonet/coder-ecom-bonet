@@ -8,7 +8,7 @@ const CartItemContainer = () => {
 
 	const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 	const taxPercentage = 0.21;
-	const shipping = !isCartVoid ? 6000 : 0;
+	const shipping = 16000;
 
 	return (
 		<>
