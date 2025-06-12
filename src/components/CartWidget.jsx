@@ -7,8 +7,6 @@ import "../css/CartWidget.css";
 
 const CartWidget = () => {
 	const { cartLen } = useContext(CartContext);
-
-	console.log(cartLen());
 	return (
 		<div className="cart__widget position-relative">
 			<FaShoppingCart className="cart__icon" />
