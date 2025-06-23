@@ -7,6 +7,7 @@ import CartPage from "./views/CartPage.jsx";
 import ItemListContainer from "./components/ItemListContainer.jsx";
 import ItemDetailContainer from "./components/ItemDetailContainer.jsx";
 import NotFound from "./views/NotFound.jsx";
+import Checkout from "./views/Checkout.jsx";
 
 // Proveedores
 
@@ -30,6 +31,7 @@ function App() {
 					{/* Rutas a las vistas principales */}
 					<Route path="/" element={<HomePage />} />
 					<Route path="/cart" element={<CartPage />} />
+					<Route path="/checkout" element={<Checkout />} />
 					<Route path="/shop" element={<Shop />} />
 					<Route path="*" element={<NotFound />} />
 

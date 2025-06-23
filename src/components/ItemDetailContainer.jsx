@@ -34,7 +34,7 @@ const ItemDetailContainer = () => {
 			.finally(() => {
 				setLoading(false);
 			});
-	}, []);
+	}, [itemId]);
 
 	if (loading) {
 		return <SpinnerLoading />;

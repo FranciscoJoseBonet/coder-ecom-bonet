@@ -3,7 +3,7 @@ import { fCurrency } from "../utils/FormatCurrency";
 
 import { Link } from "react-router-dom";
 
-const TotalSummary = ({ subtotal, taxPercentage, shipping }) => {
+const TotalSummary = ({ subtotal, taxPercentage, shipping, btn = true }) => {
 	let taxExtraValue = subtotal * taxPercentage;
 	let total = subtotal + taxExtraValue + shipping;
 
@@ -35,16 +35,25 @@ const TotalSummary = ({ subtotal, taxPercentage, shipping }) => {
 					<span className="fw-bold">Total</span>
 					<span className="fw-bold">{fCurrency(total)}</span>
 				</div>
-				<button className="btn btn-dark w-100 py-2">Proceed to Checkout</button>
-				<div className="mt-3">
-					<Link
-						to="/shop"
-						className="text-decoration-none text-dark d-flex align-items-center justify-content-center"
-					>
-						<FaArrowLeft className="me-2" size={14} />
-						Continue Shopping
-					</Link>
-				</div>
+
+				{btn ? (
+					<>
+						<Link to="/checkout" className="btn btn-dark w-100 py-2">
+							Proceed to Checkout
+						</Link>
+						<div className="mt-3">
+							<Link
+								to="/shop"
+								className="text-decoration-none text-dark d-flex align-items-center justify-content-center"
+							>
+								<FaArrowLeft className="me-2" size={14} />
+								Continue Shopping
+							</Link>
+						</div>
+					</>
+				) : (
+					<></>
+				)}
 			</div>
 		</div>
 	);
