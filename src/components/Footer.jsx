@@ -1,36 +1,33 @@
 import { FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { fetchCategories, fetchSuppLinks, fetchWebsLinks } from "../mock/AsyncService";
+
+import { fetchWebLinks } from "../service/firestore/fetchWebLinks";
+import { fetchSuppLinks } from "../service/firestore/fetchSuppLinks";
+import { fetchCategories } from "../service/firestore/fetchCategories";
+
+import { useFilteredFetch } from "../utils/useFilteredFetch";
 
 import Logo from "./Logo";
 import WebLinks from "./WebLinks";
 import FooterLinkColumn from "./FooterLinkColumn";
+import SpinnerLoading from "./SpinnerLoading";
 
 const Footer = () => {
-	const [categories, setCategories] = useState([]);
-	const [suppLinks, setSuppLinks] = useState([]);
-	const [webObjects, setWebObjects] = useState([]);
-
-	useEffect(() => {
-		fetchCategories()
-			.then((data) => {
-				setCategories(data);
-			})
-			.catch((error) => {
-				console.error("Hubo un error al cargar los datos: ", error);
-			});
-	}, []);
-
-	useEffect(() => {
-		fetchSuppLinks()
-			.then((data) => {
-				setSuppLinks(data);
-			})
-			.catch((error) => {
-				console.error("Se produjo un error al cargar los datos: ", error);
-			});
-	}, []);
+	const {
+		data: webLinksArr,
+		loading: loadingWL,
+		eror: errorWL,
+	} = useFilteredFetch(fetchWebLinks);
+	const {
+		data: categoriesArr,
+		loading: loadingCat,
+		error: errorCat,
+	} = useFilteredFetch(fetchCategories);
+	const {
+		data: suppLinksArr,
+		loading: loadingSL,
+		error: errorSL,
+	} = useFilteredFetch(fetchSuppLinks);
 
 	const legals = ["Privacy Policy", "Terms of Service", "Sitemap"];
 
@@ -47,7 +44,7 @@ const Footer = () => {
 								craftsmanship since 2005.
 							</p>
 							<div className="d-flex gap-2 mt-4">
-								{webObjects.map((item) => {
+								{webLinksArr.map((item) => {
 									return (
 										<WebLinks
 											key={item.id}
@@ -62,10 +59,22 @@ const Footer = () => {
 					</div>
 
 					{/* Segunda Columna */}
-					<FooterLinkColumn title="Shop" LinkObj={categories} _type="category" />
+					{loadingCat ? (
+						<SpinnerLoading />
+					) : errorCat ? (
+						<FetchError error={errorCat} />
+					) : (
+						<FooterLinkColumn title="Shop" LinkObj={categoriesArr} _type="category" />
+					)}
 
 					{/* Tercera Columna */}
-					<FooterLinkColumn title="Support" LinkObj={suppLinks} _type="support" />
+					{loadingSL ? (
+						<SpinnerLoading />
+					) : errorSL ? (
+						<FetchError error={errorSL} />
+					) : (
+						<FooterLinkColumn title="Support" LinkObj={suppLinksArr} _type="support" />
+					)}
 
 					{/* Cuarta Columna */}
 					<div className="col-lg-4 col-md-6">

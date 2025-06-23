@@ -1,4 +1,4 @@
-import { fetchCategories } from "../mock/AsyncService";
+import { fetchCategories } from "../service/firestore/fetchCategories";
 import { useFilteredFetch } from "../utils/useFilteredFetch";
 import CategoriesList from "./CategoriesList";
 import FetchError from "./FetchError";

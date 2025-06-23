@@ -1,19 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { fetchCategories } from "../mock/AsyncService";
+import { fetchCategories } from "../service/firestore/fetchCategories";
+import { useFilteredFetch } from "../utils/useFilteredFetch";
 
 const NavDropdown = () => {
-	const [categories, setCategories] = useState([]);
-
-	useEffect(() => {
-		fetchCategories()
-			.then((data) => {
-				setCategories(data);
-			})
-			.catch((error) => {
-				console.error("Hubo un error al cargar los datos: ", error);
-			});
-	}, []);
+	const { data: categoriesArr } = useFilteredFetch(fetchCategories);
 
 	return (
 		<li className="nav-item dropdown">
@@ -27,7 +17,7 @@ const NavDropdown = () => {
 				Categories
 			</NavLink>
 			<ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-				{categories.map((categ) => {
+				{categoriesArr.map((categ) => {
 					const label = categ.name;
 					return (
 						<li key={categ.id + "nav"}>

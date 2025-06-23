@@ -19,7 +19,7 @@ const CartItem = ({ item }) => {
 		>
 			<div className="d-flex flex-column flex-lg-row flex-md-row align-items-center p-2 g-0">
 				<div className="col-md-2 col-4 align-items center d-flex justify-content-center">
-					<Link to={item.id} style={{ textDecoration: "none" }}>
+					<Link to={"item/" + item.id} style={{ textDecoration: "none" }}>
 						<img
 							src={item.image}
 							alt={item.name}

@@ -4,7 +4,7 @@ import { CartContext } from "../context/CartContext.jsx";
 import TotalSummary from "../components/TotalSummary.jsx";
 
 const CartItemContainer = () => {
-	const { cart, isCartVoid } = useContext(CartContext);
+	const { cart } = useContext(CartContext);
 
 	const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 	const taxPercentage = 0.21;
