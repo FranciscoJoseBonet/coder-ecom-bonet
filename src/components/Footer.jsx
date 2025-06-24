@@ -5,7 +5,7 @@ import { fetchWebLinks } from "../service/firestore/fetchWebLinks";
 import { fetchSuppLinks } from "../service/firestore/fetchSuppLinks";
 import { fetchCategories } from "../service/firestore/fetchCategories";
 
-import { useFilteredFetch } from "../utils/useFilteredFetch";
+import useFilteredFetch from "../utils/useFilteredFetch";
 
 import Logo from "./Logo";
 import WebLinks from "./WebLinks";

@@ -1,5 +1,5 @@
 import { fetchCategories } from "../service/firestore/fetchCategories";
-import { useFilteredFetch } from "../utils/useFilteredFetch";
+import useFilteredFetch from "../utils/useFilteredFetch";
 import CategoriesList from "./CategoriesList";
 import FetchError from "./FetchError";
 import SpinnerLoading from "./SpinnerLoading";

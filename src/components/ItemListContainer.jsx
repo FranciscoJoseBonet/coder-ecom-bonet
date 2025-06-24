@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 
-import { fetchProducts } from "../service/firestore/fetchProducts";
-import { useFilteredFetch } from "../utils/useFilteredFetch";
+import fetchProducts from "../service/firestore/fetchProducts";
+import useFilteredFetch from "../utils/useFilteredFetch";
 
 import SpinnerLoading from "./SpinnerLoading";
 import ItemList from "./ItemList";

@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { fetchCategories } from "../service/firestore/fetchCategories";
-import { useFilteredFetch } from "../utils/useFilteredFetch";
+import useFilteredFetch from "../utils/useFilteredFetch";
 
 const NavDropdown = () => {
 	const { data: categoriesArr } = useFilteredFetch(fetchCategories);
