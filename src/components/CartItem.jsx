@@ -1,8 +1,9 @@
 import { FaTrash } from "react-icons/fa";
 import { fCurrency } from "../utils/FormatCurrency";
 import { Link } from "react-router-dom";
-
+import Swal from "sweetalert2";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 import { CartContext } from "../context/CartContext";
 
@@ -10,7 +11,31 @@ const CartItem = ({ item }) => {
 	const { removeItem } = useContext(CartContext);
 
 	const handleRemove = (id) => {
-		removeItem(id);
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				removeItem(id);
+				toast("Removed Successfully", {
+					position: "top-right",
+					autoClose: 3000,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					style: {
+						background: "linear-gradient(to right, #74ebd5, #9face6)",
+						color: "#fff",
+					},
+				});
+			}
+		});
 	};
 	return (
 		<div

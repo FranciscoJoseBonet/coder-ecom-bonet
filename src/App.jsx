@@ -9,6 +9,9 @@ import ItemDetailContainer from "./components/ItemDetailContainer.jsx";
 import NotFound from "./views/NotFound.jsx";
 import Checkout from "./views/Checkout.jsx";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 // Proveedores
 
 import { CartProvider } from "./context/CartContext.jsx";
@@ -50,6 +53,7 @@ function App() {
 						element={<ItemDetailContainer />}
 					/>
 				</Routes>
+				<ToastContainer />
 			</CartProvider>
 			<Footer />
 		</BrowserRouter>

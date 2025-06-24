@@ -1,7 +1,10 @@
 import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { iconMap } from "../utils/iconMap";
 
 const CategoryCard = ({ category }) => {
+	let Icon = iconMap[category.icon];
+
 	return (
 		<div className="card h-100 border-0 shadow-sm overflow-hidden">
 			<div className="row g-0 h-100">
@@ -9,7 +12,7 @@ const CategoryCard = ({ category }) => {
 					className="col-md-4 d-flex align-items-center justify-content-center py-4"
 					style={{ backgroundColor: category.color }}
 				>
-					{category.icon}
+					{<Icon size={48} />}
 				</div>
 				<div className="col-md-8">
 					<div className="card-body">

@@ -30,14 +30,16 @@ const ItemListContainer = ({ text, head = false, filterBy }) => {
 	return (
 		<>
 			{head ? (
-				<Greeting
-					text={text}
-					category={
-						categoryId
-							? categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
-							: "All the products"
-					}
-				/>
+				<>
+					<Greeting
+						text={text}
+						category={
+							categoryId
+								? categoryId.charAt(0).toUpperCase() + categoryId.slice(1)
+								: "All the products"
+						}
+					/>
+				</>
 			) : null}
 			<div className="container my-4">
 				<ItemList products={products} />

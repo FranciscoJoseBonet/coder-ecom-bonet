@@ -1,6 +1,8 @@
 import { Row, Col, Card, Badge } from "react-bootstrap";
 import { FaShieldAlt, FaTruck, FaUndo } from "react-icons/fa";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 import { fCurrency } from "../utils/FormatCurrency";
 
@@ -11,11 +13,37 @@ import { CartContext } from "../context/CartContext";
 
 const ItemDetail = ({ product }) => {
 	const { addItem } = useContext(CartContext);
+	const navigate = useNavigate();
 
 	const { name, description, price, image, stock, category, rating, reviews } = product;
 
 	const handleOnAdd = (quantity) => {
 		addItem(product, quantity);
+
+		Swal.fire({
+			title: "Product added to cart!",
+			text: `${quantity} ${name} added`,
+			width: 600,
+			padding: "3em",
+			color: "#716add",
+			background: "#fff url(/images/trees.png)",
+			backdrop: `
+                rgba(0,0,123,0.4)
+                url("/images/nyan-cat.gif")
+                left top
+                no-repeat
+            `,
+			showCancelButton: true,
+			confirmButtonText: "Cart",
+			cancelButtonText: "Continue Shopping",
+			reverseButtons: true,
+		}).then((result) => {
+			if (result.isConfirmed) {
+				navigate("/cart");
+			} else if (result.dismiss === Swal.DismissReason.cancel) {
+				navigate("/");
+			}
+		});
 	};
 
 	return (

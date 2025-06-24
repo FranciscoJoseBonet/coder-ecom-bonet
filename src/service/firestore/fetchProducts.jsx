@@ -1,6 +1,8 @@
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 
+// Pensado para usar con el customHook useFetchProducts
+
 const fetchProducts = async (filters = []) => {
 	let q = collection(db, "products");
 
