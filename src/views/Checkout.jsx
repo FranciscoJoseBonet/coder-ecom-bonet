@@ -12,7 +12,8 @@ import { CartContext } from "../context/CartContext.jsx";
 import TotalSummary from "../components/TotalSummary.jsx";
 
 const Checkout = () => {
-	const { cart, isCartVoid } = useContext(CartContext);
+	const { cart, isCartVoid, finalPrice } = useContext(CartContext);
+	const [buyer, setBuyer] = useState();
 
 	const [formData, setFormData] = useState({
 		// informacino del Cliente
@@ -26,14 +27,14 @@ const Checkout = () => {
 		shippingCity: "",
 		shippingProvince: "",
 		shippingPostal: "",
-		shippingCountry: "United States",
+		shippingCountry: "Argentina",
 
 		// Informacion para la factuera
 		billingAddress: "",
 		billingCity: "",
 		billingProvince: "",
 		billingPostal: "",
-		billingCountry: "United States",
+		billingCountry: "Argentina",
 		sameAsShipping: true,
 
 		// Informacion para el pago
@@ -77,7 +78,9 @@ const Checkout = () => {
 		// Simulacion del proceso de compra
 		setTimeout(() => {
 			setIsProcessing(false);
-			console.log("Order submitted:", formData);
+			const orderData = { ...formData, cart: cart, total: finalPrice() };
+			setBuyer(orderData);
+			console.log("Order submitted:", orderData);
 		}, 2000);
 	};
 

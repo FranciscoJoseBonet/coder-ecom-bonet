@@ -40,6 +40,13 @@ export const CartProvider = ({ children }) => {
 		return cart.reduce((acc, item) => acc + item.quantity, 0);
 	};
 
+	const totalPrice = () => {
+		return Number(cart.reduce((acc, item) => acc + item.price * item.quantity, 0));
+	};
+	const finalPrice = () => {
+		return totalPrice() + 16000 + 0.21 * totalPrice();
+	};
+
 	const contextValue = {
 		cart,
 		addItem,
@@ -48,6 +55,8 @@ export const CartProvider = ({ children }) => {
 		isInCart,
 		isCartVoid,
 		cartLen,
+		totalPrice,
+		finalPrice,
 	};
 	return <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>;
 };
