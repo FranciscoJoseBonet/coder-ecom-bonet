@@ -67,8 +67,8 @@ const FormClientFields = ({ register, errors }) => {
 								{...register("email", {
 									required: "Email is required",
 									pattern: {
-										value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-										message: "Invalid email format",
+										value: /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/,
+										message: "Invalid email format, it must be like: example@domain.com",
 									},
 								})}
 							/>
@@ -83,15 +83,36 @@ const FormClientFields = ({ register, errors }) => {
 							<Form.Label>Phone Number</Form.Label>
 							<Form.Control
 								type="tel"
-								placeholder="(555) 123-4567"
-								isInvalid={!!errors.phone}
+								placeholder="123 - 456 3223"
+								inputMode="numeric"
+								maxLength={14}
 								{...register("phone", {
+									required: "Phone number is required",
 									pattern: {
-										value: /^\(?\d{3}\)?[- ]?\d{3}[- ]?\d{4}$/,
-										message: "Invalid phone number",
+										value: /^\d{3} - \d{3} \d{4}$/,
+										message: "Enter a valid phone number",
+									},
+									onChange: (e) => {
+										let value = e.target.value.replace(/\D/g, ""); // Solo números
+
+										if (value.length > 10) value = value.slice(0, 10); // Máx 10 dígitos
+
+										let formatted = value;
+										if (value.length > 6) {
+											formatted = `${value.slice(0, 3)} - ${value.slice(
+												3,
+												6
+											)} ${value.slice(6)}`;
+										} else if (value.length > 3) {
+											formatted = `${value.slice(0, 3)} - ${value.slice(3)}`;
+										}
+
+										e.target.value = formatted;
 									},
 								})}
+								isInvalid={!!errors.phone}
 							/>
+
 							<Form.Control.Feedback type="invalid">
 								{errors.phone?.message}
 							</Form.Control.Feedback>

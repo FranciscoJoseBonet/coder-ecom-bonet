@@ -26,7 +26,9 @@ const Checkout = () => {
 		handleSubmit,
 		formState: { errors },
 		reset,
-	} = useForm();
+	} = useForm({
+		mode: "onBlur",
+	});
 
 	const subtotal = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 	const taxPercentage = 0.21;
@@ -82,7 +84,7 @@ const Checkout = () => {
 			) : orderId ? (
 				<Container className="py-5">
 					<Row className="justify-content-center">
-						<div className="text-center mb-5">
+						<div className="text-center mb-5 mt-5">
 							<h1 className="h2 fw-bold mb-2">Order Confirmed!</h1>
 							<p className="text-muted">
 								Thank you for your purchase! Your order ID is: {orderId}
