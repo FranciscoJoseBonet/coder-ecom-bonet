@@ -1,5 +1,5 @@
 
-# 🛒 Coder E-Commerce Presentation
+# 🛒 Coder E-Commerce
 
 A responsive and modular **ecommerce web application** built with **React** as part of the Coderhouse React JS course. This project simulates a complete online store, featuring a product catalog, cart functionality, and user interface components for a modern shopping experience.
 
