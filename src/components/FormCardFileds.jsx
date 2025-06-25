@@ -41,12 +41,21 @@ const FormCardFields = ({ register, errors }) => {
 								<Form.Control
 									type="text"
 									placeholder="1234 5678 9012 3456"
+									inputMode="numeric"
 									maxLength={19}
 									{...register("cardNumber", {
 										required: "Card number is required",
 										pattern: {
-											value: /^[0-9\s]{16,19}$/,
+											value: /^(\d{4} ?){4}$/,
 											message: "Enter a valid card number",
+										},
+										onChange: (e) => {
+											let value = e.target.value.replace(/\D/g, "");
+											if (value.length > 16) value = value.slice(0, 16);
+
+											const formatted = value.replace(/(.{4})/g, "$1 ").trim();
+
+											e.target.value = formatted;
 										},
 									})}
 									isInvalid={!!errors.cardNumber}
@@ -74,6 +83,18 @@ const FormCardFields = ({ register, errors }) => {
 										value: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/,
 										message: "Enter a valid date (MM/YY)",
 									},
+									onChange: (e) => {
+										let value = e.target.value.replace(/\D/g, ""); // solo números
+
+										if (value.length >= 3) {
+											value = value.slice(0, 4); // 4 digitos como maximo
+											value = value.replace(/(\d{2})(\d{1,2})/, "$1/$2");
+										} else {
+											value = value;
+										}
+
+										e.target.value = value;
+									},
 								})}
 								isInvalid={!!errors.expiryDate}
 							/>
@@ -89,11 +110,11 @@ const FormCardFields = ({ register, errors }) => {
 							<Form.Control
 								type="text"
 								placeholder="123"
-								maxLength={4}
+								maxLength={3}
 								{...register("cvv", {
 									required: "CVV is required",
 									pattern: {
-										value: /^[0-9]{3,4}$/,
+										value: /^[0-9]{3}$/,
 										message: "Enter a valid CVV",
 									},
 								})}
