@@ -32,7 +32,7 @@ const Footer = () => {
 	const legals = ["Privacy Policy", "Terms of Service", "Sitemap"];
 
 	return (
-		<footer className="bg-light pt-5 pb-3 d-flex flex-column bottom-0">
+		<footer className="bg-light pt-5 pb-3 d-flex flex-column bottom-0 mt-auto">
 			<div className="container flex-grow-1">
 				<div className="row g-4 ">
 					{/* Primera columna */}
