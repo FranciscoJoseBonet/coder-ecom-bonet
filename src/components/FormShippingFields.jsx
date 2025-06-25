@@ -15,6 +15,7 @@ const FormShippingFields = ({ register, errors }) => {
 						<Form.Group>
 							<Form.Label>Street Address *</Form.Label>
 							<Form.Control
+								maxLength={30}
 								type="text"
 								placeholder="123 Main Street"
 								{...register("shippingAddress", {
@@ -90,13 +91,25 @@ const FormShippingFields = ({ register, errors }) => {
 						<Form.Group>
 							<Form.Label>Postal code *</Form.Label>
 							<Form.Control
+								maxLength={4}
 								type="text"
-								placeholder="3016"
+								placeholder="2222"
 								{...register("shippingPostal", {
 									required: "Postal code is required",
 									pattern: {
 										value: /^[0-9]{4}$/,
 										message: "Postal code must be 4 digits",
+									},
+									onChange: (e) => {
+										let value = e.target.value.replace(/\D/g, "");
+
+										if (value.length >= 4) {
+											value = value.slice(0, 4);
+										} else {
+											value = value;
+										}
+
+										e.target.value = value;
 									},
 								})}
 								isInvalid={!!errors.shippingPostal}

@@ -25,6 +25,7 @@ const FormBillingFields = ({ register, errors, sameAsShipping, setSameAsShipping
 							<Form.Group>
 								<Form.Label>Street Address *</Form.Label>
 								<Form.Control
+									maxLength={30}
 									type="text"
 									placeholder="123 Main Street"
 									{...register("billingAddress", {
@@ -101,12 +102,24 @@ const FormBillingFields = ({ register, errors, sameAsShipping, setSameAsShipping
 								<Form.Label>Postal Code *</Form.Label>
 								<Form.Control
 									type="text"
-									placeholder="12345"
+									maxLength={4}
+									placeholder="2222"
 									{...register("billingPostal", {
 										required: "Postal code is required",
 										pattern: {
-											value: /^[0-9]{4,5}$/,
-											message: "Postal code must be 4-5 digits",
+											value: /^[0-9]{4}$/,
+											message: "Postal code must be 4 digits",
+										},
+										onChange: (e) => {
+											let value = e.target.value.replace(/\D/g, "");
+
+											if (value.length >= 4) {
+												value = value.slice(0, 4);
+											} else {
+												value = value;
+											}
+
+											e.target.value = value;
 										},
 									})}
 									isInvalid={!!errors.billingPostal}
