@@ -11,7 +11,7 @@ const CartWidget = () => {
 		<div className="cart__widget position-relative">
 			<FaShoppingCart className="cart__icon" />
 
-			{cartLen ? <span className="cart__count">{Number(cartLen())}</span> : null}
+			{cartLen() > 0 && <span className="cart__count">{Number(cartLen())}</span>}
 		</div>
 	);
 };
