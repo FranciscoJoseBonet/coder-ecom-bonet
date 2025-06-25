@@ -1,7 +1,7 @@
 import { FaCreditCard, FaLock, FaShieldAlt } from "react-icons/fa";
 import { Card, Row, Col, Form, Alert, InputGroup } from "react-bootstrap";
 
-const FormCardFields = ({ handleInputChange, formData }) => {
+const FormCardFields = ({ register, errors }) => {
 	return (
 		<Card className="border-0 shadow-sm mb-4">
 			<Card.Body className="p-4">
@@ -22,59 +22,86 @@ const FormCardFields = ({ handleInputChange, formData }) => {
 							<Form.Label>Cardholder Name *</Form.Label>
 							<Form.Control
 								type="text"
-								name="cardName"
-								value={formData.cardName}
-								onChange={handleInputChange}
-								required
 								placeholder="Name as it appears on card"
+								{...register("cardName", {
+									required: "Cardholder name is required",
+								})}
+								isInvalid={!!errors.cardName}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{errors.cardName?.message}
+							</Form.Control.Feedback>
 						</Form.Group>
 					</Col>
+
 					<Col xs={12}>
 						<Form.Group>
 							<Form.Label>Card Number *</Form.Label>
 							<InputGroup>
 								<Form.Control
 									type="text"
-									name="cardNumber"
-									value={formData.cardNumber}
-									onChange={handleInputChange}
-									required
 									placeholder="1234 5678 9012 3456"
 									maxLength={19}
+									{...register("cardNumber", {
+										required: "Card number is required",
+										pattern: {
+											value: /^[0-9\s]{16,19}$/,
+											message: "Enter a valid card number",
+										},
+									})}
+									isInvalid={!!errors.cardNumber}
 								/>
 								<InputGroup.Text>
 									<FaCreditCard className="text-muted" />
 								</InputGroup.Text>
+								<Form.Control.Feedback type="invalid">
+									{errors.cardNumber?.message}
+								</Form.Control.Feedback>
 							</InputGroup>
 						</Form.Group>
 					</Col>
+
 					<Col md={6}>
 						<Form.Group>
 							<Form.Label>Expiry Date *</Form.Label>
 							<Form.Control
 								type="text"
-								name="expiryDate"
-								value={formData.expiryDate}
-								onChange={handleInputChange}
-								required
 								placeholder="MM/YY"
 								maxLength={5}
+								{...register("expiryDate", {
+									required: "Expiry date is required",
+									pattern: {
+										value: /^(0[1-9]|1[0-2])\/?([0-9]{2})$/,
+										message: "Enter a valid date (MM/YY)",
+									},
+								})}
+								isInvalid={!!errors.expiryDate}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{errors.expiryDate?.message}
+							</Form.Control.Feedback>
 						</Form.Group>
 					</Col>
+
 					<Col md={6}>
 						<Form.Group>
 							<Form.Label>CVV *</Form.Label>
 							<Form.Control
 								type="text"
-								name="cvv"
-								value={formData.cvv}
-								onChange={handleInputChange}
-								required
 								placeholder="123"
 								maxLength={4}
+								{...register("cvv", {
+									required: "CVV is required",
+									pattern: {
+										value: /^[0-9]{3,4}$/,
+										message: "Enter a valid CVV",
+									},
+								})}
+								isInvalid={!!errors.cvv}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{errors.cvv?.message}
+							</Form.Control.Feedback>
 						</Form.Group>
 					</Col>
 				</Row>
@@ -82,4 +109,5 @@ const FormCardFields = ({ handleInputChange, formData }) => {
 		</Card>
 	);
 };
+
 export default FormCardFields;

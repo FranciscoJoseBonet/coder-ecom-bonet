@@ -1,7 +1,7 @@
 import { FaTruck } from "react-icons/fa";
 import { Card, Row, Col, Form } from "react-bootstrap";
 
-const FormShippingFields = ({ handleInputChange, formData }) => {
+const FormShippingFields = ({ register, errors }) => {
 	return (
 		<Card className="border-0 shadow-sm mb-4">
 			<Card.Body className="p-4">
@@ -16,35 +16,43 @@ const FormShippingFields = ({ handleInputChange, formData }) => {
 							<Form.Label>Street Address *</Form.Label>
 							<Form.Control
 								type="text"
-								name="shippingAddress"
-								value={formData.shippingAddress}
-								onChange={handleInputChange}
-								required
 								placeholder="123 Main Street"
+								{...register("shippingAddress", {
+									required: "Street address is required",
+								})}
+								isInvalid={!!errors.shippingAddress}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{errors.shippingAddress?.message}
+							</Form.Control.Feedback>
 						</Form.Group>
 					</Col>
+
 					<Col md={6}>
 						<Form.Group>
 							<Form.Label>City *</Form.Label>
 							<Form.Control
 								type="text"
-								name="shippingCity"
-								value={formData.shippingCity}
-								onChange={handleInputChange}
-								required
 								placeholder="City"
+								{...register("shippingCity", {
+									required: "City is required",
+								})}
+								isInvalid={!!errors.shippingCity}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{errors.shippingCity?.message}
+							</Form.Control.Feedback>
 						</Form.Group>
 					</Col>
+
 					<Col md={3}>
 						<Form.Group>
 							<Form.Label>Province *</Form.Label>
 							<Form.Select
-								name="shippingProvince"
-								value={formData.shippingProvince}
-								onChange={handleInputChange}
-								required
+								{...register("shippingProvince", {
+									required: "Province is required",
+								})}
+								isInvalid={!!errors.shippingProvince}
 							>
 								<option value="">Select your province</option>
 								<option value="CABA">CABA</option>
@@ -72,19 +80,30 @@ const FormShippingFields = ({ handleInputChange, formData }) => {
 								<option value="TF">Tierra del Fuego</option>
 								<option value="TUC">Tucumán</option>
 							</Form.Select>
+							<Form.Control.Feedback type="invalid">
+								{errors.shippingProvince?.message}
+							</Form.Control.Feedback>
 						</Form.Group>
 					</Col>
+
 					<Col md={3}>
 						<Form.Group>
 							<Form.Label>Postal code *</Form.Label>
 							<Form.Control
 								type="text"
-								name="shippingPostal"
-								value={formData.shippingPostal}
-								onChange={handleInputChange}
-								required
 								placeholder="3016"
+								{...register("shippingPostal", {
+									required: "Postal code is required",
+									pattern: {
+										value: /^[0-9]{4}$/,
+										message: "Postal code must be 4 digits",
+									},
+								})}
+								isInvalid={!!errors.shippingPostal}
 							/>
+							<Form.Control.Feedback type="invalid">
+								{errors.shippingPostal?.message}
+							</Form.Control.Feedback>
 						</Form.Group>
 					</Col>
 				</Row>

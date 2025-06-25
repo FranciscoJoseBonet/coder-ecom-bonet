@@ -1,7 +1,7 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Card, Row, Col, Form } from "react-bootstrap";
 
-const FormBillingFields = ({ handleInputChange, formData }) => {
+const FormBillingFields = ({ register, errors, sameAsShipping, setSameAsShipping }) => {
 	return (
 		<Card className="border-0 shadow-sm mb-4">
 			<Card.Body className="p-4">
@@ -12,49 +12,57 @@ const FormBillingFields = ({ handleInputChange, formData }) => {
 					</div>
 					<Form.Check
 						type="checkbox"
-						name="sameAsShipping"
-						checked={formData.sameAsShipping}
-						onChange={handleInputChange}
 						label="Same as shipping"
+						id="sameAsShipping"
+						checked={sameAsShipping}
+						onChange={() => setSameAsShipping(!sameAsShipping)}
 					/>
 				</div>
 
-				{!formData.sameAsShipping && (
+				{!sameAsShipping && (
 					<Row className="g-3">
 						<Col xs={12}>
 							<Form.Group>
 								<Form.Label>Street Address *</Form.Label>
 								<Form.Control
 									type="text"
-									name="billingAddress"
-									value={formData.billingAddress}
-									onChange={handleInputChange}
-									required={!formData.sameAsShipping}
 									placeholder="123 Main Street"
+									{...register("billingAddress", {
+										required: "Street address is required",
+									})}
+									isInvalid={!!errors.billingAddress}
 								/>
+								<Form.Control.Feedback type="invalid">
+									{errors.billingAddress?.message}
+								</Form.Control.Feedback>
 							</Form.Group>
 						</Col>
+
 						<Col md={6}>
 							<Form.Group>
 								<Form.Label>City *</Form.Label>
 								<Form.Control
 									type="text"
-									name="billingCity"
-									value={formData.billingCity}
-									onChange={handleInputChange}
-									required={!formData.sameAsShipping}
 									placeholder="City"
+									{...register("billingCity", {
+										required: "City is required",
+									})}
+									isInvalid={!!errors.billingCity}
 								/>
+								<Form.Control.Feedback type="invalid">
+									{errors.billingCity?.message}
+								</Form.Control.Feedback>
 							</Form.Group>
 						</Col>
+
 						<Col md={3}>
 							<Form.Group>
 								<Form.Label>Province *</Form.Label>
 								<Form.Select
-									name="billingProvince"
-									value={formData.billingProvince}
-									onChange={handleInputChange}
-									required={!formData.sameAsShipping}
+									{...register("billingProvince", {
+										required: "Province is required",
+									})}
+									isInvalid={!!errors.billingProvince}
 								>
 									<option value="">Select your province</option>
 									<option value="CABA">CABA</option>
@@ -82,19 +90,30 @@ const FormBillingFields = ({ handleInputChange, formData }) => {
 									<option value="TF">Tierra del Fuego</option>
 									<option value="TUC">Tucumán</option>
 								</Form.Select>
+								<Form.Control.Feedback type="invalid">
+									{errors.billingProvince?.message}
+								</Form.Control.Feedback>
 							</Form.Group>
 						</Col>
+
 						<Col md={3}>
 							<Form.Group>
 								<Form.Label>Postal Code *</Form.Label>
 								<Form.Control
 									type="text"
-									name="billingPostal"
-									value={formData.billingPostal}
-									onChange={handleInputChange}
-									required={!formData.sameAsShipping}
 									placeholder="12345"
+									{...register("billingPostal", {
+										required: "Postal code is required",
+										pattern: {
+											value: /^[0-9]{4,5}$/,
+											message: "Postal code must be 4-5 digits",
+										},
+									})}
+									isInvalid={!!errors.billingPostal}
 								/>
+								<Form.Control.Feedback type="invalid">
+									{errors.billingPostal?.message}
+								</Form.Control.Feedback>
 							</Form.Group>
 						</Col>
 					</Row>
